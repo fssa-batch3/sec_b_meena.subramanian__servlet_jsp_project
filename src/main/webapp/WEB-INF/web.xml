@@ -70,6 +70,36 @@
   	<description></description>
   	<servlet-class>in.fssa.kaithari.servlet.NewUserServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>NewUser</servlet-name>
+  	<display-name>NewUser</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.NewUser</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>CreateUsersServlet</servlet-name>
+  	<display-name>CreateUsersServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.CreateUserServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>NewUsersServlet</servlet-name>
+  	<display-name>NewUsersServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.NewUsersServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UserLoginServlet</servlet-name>
+  	<display-name>UserLoginServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.UserLoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UserLogged</servlet-name>
+  	<display-name>UserLogged</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.UserLogged</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ProductCreateServlet</servlet-name>
   	<url-pattern>/ProductCreateServlet</url-pattern>
@@ -113,5 +143,25 @@
   <servlet-mapping>
   	<servlet-name>NewUserServlet</servlet-name>
   	<url-pattern>/NewUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>NewUser</servlet-name>
+  	<url-pattern>/NewUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CreateUsersServlet</servlet-name>
+  	<url-pattern>/CreateUsersServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>NewUsersServlet</servlet-name>
+  	<url-pattern>/NewUsersServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserLoginServlet</servlet-name>
+  	<url-pattern>/UserLoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserLogged</servlet-name>
+  	<url-pattern>/UserLogged</url-pattern>
   </servlet-mapping>
 </web-app>

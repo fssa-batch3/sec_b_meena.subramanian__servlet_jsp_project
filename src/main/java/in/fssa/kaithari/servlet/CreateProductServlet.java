@@ -41,7 +41,7 @@ public class CreateProductServlet extends HttpServlet {
    
 		try {
 			productservice.createProduct(product);
-			response.sendRedirect(request.getContextPath()+"/list_all_products");
+			response.sendRedirect(request.getContextPath()+"/list_all_products.jsp");
 			
 		} catch (ServiceException e) {
 			e.printStackTrace();

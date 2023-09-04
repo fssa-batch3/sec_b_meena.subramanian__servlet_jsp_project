@@ -7,25 +7,90 @@
 <html>
 <head>
 <meta charset="utf-8">
- <style>
-        body {
-            font-family: Arial, sans-serif;
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #d9d9d9;
+    }
+    td a {
+        text-decoration: none;
+        color: #007bff;
+    }
+    td button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    td button:hover {
+        background-color: #0056b3;
+    }
+    
+    
+     .header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        table {
-            width: 50%;
-            margin: 20px auto;
-            text-align: center;
+
+        .profile-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #fff; /* Change the background color */
+            /* You can use a real image URL here for the profile picture */
+            /* background-image: url('path/to/profile-image.png'); */
+            background-size: cover;
+            background-position: center;
+            margin-right: 10px;
         }
-        th, td {
-            border: 1px solid #dddddd;
-            padding: 8px;
+
+        .profile-link {
+            color: white;
+            text-decoration: none;
         }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+</style>
+
 </head>
 <body>
+
+<div class="header">
+        <div>
+       
+            <div class="profile-icon"></div>
+            
+            <a class="profile-link" href="">Profile</a>
+        </div>
+        <h2>kaithari</h2>
+    </div>
+
+<a href="NewProductServlet"><button type="submit">Add Product</button></a>
+
     <%
 	ProductService productList = new ProductService();
 	%>
@@ -67,3 +132,4 @@
 	</table>
 </body>
 </html>
+

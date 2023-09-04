@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+//import javax.servlet.http.HttpSession;
 
 import in.fssa.kaithari.exception.ServiceException;
 import in.fssa.kaithari.model.Product;
@@ -28,6 +29,10 @@ public class ListAllProductsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
+			// HttpSession session = request.getSession();
+
+		        
+		      
 		 ProductService productService = new ProductService();
 			Set<Product> user = productService.listAllProduct();
 			request.setAttribute("productDetails", user);
