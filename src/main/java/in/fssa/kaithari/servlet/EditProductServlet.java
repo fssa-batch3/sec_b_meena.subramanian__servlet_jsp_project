@@ -32,6 +32,7 @@ public class EditProductServlet extends HttpServlet {
 			rd.forward(request, response);
 	} catch (Exception e) {
 		 
+		throw new ServletException(e.getMessage());
 		}
 	}
 

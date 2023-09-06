@@ -32,16 +32,17 @@ public class CreateProductServlet extends HttpServlet {
         String description = request.getParameter("description");
         int Price = Integer.parseInt(request.getParameter("Price"));
         int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-  
+        int userId=Integer.parseInt(request.getParameter("id"));
         
         product.setName(name);
         product.setDescription(description);
         product.setPrice(Price);
         product.setCategory_id(categoryId);
+        product.setUserId(userId);
    
 		try {
 			productservice.createProduct(product);
-			response.sendRedirect(request.getContextPath()+"/list_all_products.jsp");
+			response.sendRedirect(request.getContextPath()+"/list_all_products");
 			
 		} catch (ServiceException e) {
 			e.printStackTrace();

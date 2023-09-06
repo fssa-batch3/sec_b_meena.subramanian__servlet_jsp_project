@@ -1,3 +1,6 @@
+<%@page import="in.fssa.kaithari.model.Category"%>
+<%@page import="java.util.Set"%>
+<%@page import="in.fssa.kaithari.service.CategoryService"%>
 <%@page import="in.fssa.kaithari.service.ProductService"%>
 <%@page import="in.fssa.kaithari.model.Product"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
@@ -64,6 +67,11 @@
 Product product = (Product) request.getAttribute("product");
 
 System.out.print(product.getName());
+CategoryService cs=new CategoryService();
+
+Set<Category> listOfCategory=cs.listAllCategroy();
+
+String categoryName="";
 %>
 
 <div>
@@ -81,8 +89,19 @@ System.out.print(product.getName());
         <label for="description">Description</label>
         <input type="text" name="description" value="<%=product.getDescription() %>" required> <br>
         
-        <label for="categoryId">Category ID</label>
-        <input type="number" name="categoryId" value="<%=product.getCategory_id() %>" required> <br>
+        <label for="categoryId">Category:</label>
+	<select name="categoryId" id="categoryId" required>
+	<%for(Category category : listOfCategory){
+		if(category.getId() == product.getCategory_id()){
+			categoryName=category.getName();
+		}
+		
+	} %>
+    <option value="<%=product.getCategory_id()%>" selected><%= categoryName%></option>
+    <% for (Category category : listOfCategory) { %>
+        <option value="<%= category.getId() %>"><%= category.getName() %></option>
+    <% } %>
+	</select>
         
         <label for="Price">Price</label> 
         <input type="number" name="Price" value="<%=product.getPrice() %>" required><br>

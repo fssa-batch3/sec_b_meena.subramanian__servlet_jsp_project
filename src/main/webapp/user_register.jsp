@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>Register Page</h1>
 <form action="create" method="post">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name"><br><br>

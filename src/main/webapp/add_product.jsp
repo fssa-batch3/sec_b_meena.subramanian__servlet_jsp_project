@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="java.util.Set"%>
+<%@page import="in.fssa.kaithari.service.CategoryService"%>
+<%@page import="in.fssa.kaithari.model.Category"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -44,8 +47,14 @@
 
 </head>
 <body>
+<% int userId=(Integer) request.getSession().getAttribute("userId");
+CategoryService cs=new CategoryService();
+
+Set<Category> listOfCategory=cs.listAllCategroy();
+%>
 <h1>Add Products</h1>
 	<form action = "product/create" method = "POST">
+	<input type="hidden" name="id" value="<%= userId%>">
 		<label for="name">Name</label> 
 		<input type="text" name="product_name" required><br>
 		
@@ -53,9 +62,13 @@
 		<label for="description">Description</label>
 		 <input type="text" name="description" required> <br>
 		 
-		 <label for="categoryId">CategoryId</label>
-		 <input type="number" name="categoryId" required> <br>
-		 
+		<label for="categoryId">Category:</label>
+	<select name="categoryId" id="categoryId" required>
+    <option value="" disabled selected>Select a category</option>
+    <% for (Category category : listOfCategory) { %>
+        <option value="<%= category.getId() %>"><%= category.getName() %></option>
+    <% } %>
+	</select>
 		 	 
 		 <label for="Price">Price</label> 
 		 <input type="number" name="Price" required><br>

@@ -79,37 +79,31 @@
 </head>
 <body>
 
-<div class="header">
-        <div>
-       
-            <div class="profile-icon"></div>
-            
-            <a class="profile-link" href="">Profile</a>
-        </div>
-        <h2>kaithari</h2>
-    </div>
-
 <a href="NewProductServlet"><button type="submit">Add Product</button></a>
 
     <%
 	ProductService productList = new ProductService();
 	%>
 	<%
-	Set<Product> listProducts = productList.listAllProduct();
+	//Set<Product> listProducts = productList.listAllProduct();
+	
+	Set<Product> productlist=(Set<Product>)request.getAttribute("productDetails");
 	%>
 	<table border=1>
 		<tr>
 			<th>Id</th>
 			<th>Name</th>
 			<th>Description</th>
+			<th>CategoryId</th>
 			<th>Price</th>
 			
 		</tr>
-		<% for(Product products : listProducts){ %>
+		<% for(Product products : productlist){ %>
 		<tr>
 			<td><%= products.getId() %></td>
 			<td><%= products.getName() %></td>
 			<td><%= products.getDescription() %></td>
+			<td><%= products.getCategory_id() %></td>
 			<td><%= products.getPrice()%></td>
 			<td>
 			<a href="product/details?id=<%= products.getId()%>">

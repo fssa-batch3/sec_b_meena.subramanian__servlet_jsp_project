@@ -29,13 +29,14 @@ public class ListAllProductsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			// HttpSession session = request.getSession();
+			 //HttpSession session = request.getSession();
 
+			int id=(Integer) request.getSession().getAttribute("userId");
 		        
 		      
 		 ProductService productService = new ProductService();
-			Set<Product> user = productService.listAllProduct();
-			request.setAttribute("productDetails", user);
+			Set<Product> product = productService.findProductByUsertId(id);
+			request.setAttribute("productDetails", product);
 			RequestDispatcher rd = request.getRequestDispatcher("/list_all_products.jsp");
 			rd.forward(request, response);
 		} catch (ServiceException e) {
