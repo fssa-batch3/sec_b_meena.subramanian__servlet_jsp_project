@@ -20,6 +20,8 @@ public class DeleteProductServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		
 		try {
 			ProductService ps = new ProductService();
 			int id = Integer.parseInt(request.getParameter("id"));

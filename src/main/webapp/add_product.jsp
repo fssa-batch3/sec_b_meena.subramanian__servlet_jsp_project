@@ -52,12 +52,12 @@ CategoryService cs=new CategoryService();
 
 Set<Category> listOfCategory=cs.listAllCategroy();
 %>
+
 <h1>Add Products</h1>
 	<form action = "product/create" method = "POST">
 	<input type="hidden" name="id" value="<%= userId%>">
 		<label for="name">Name</label> 
 		<input type="text" name="product_name" required><br>
-		
 		
 		<label for="description">Description</label>
 		 <input type="text" name="description" required> <br>

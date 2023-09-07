@@ -30,6 +30,7 @@ public class UpdateProductServlet extends HttpServlet {
 	    int price =Integer.parseInt(request.getParameter("Price"));
       	String description = request.getParameter("description");
         String productName = request.getParameter("product_name");
+        int userId = (Integer)request.getSession().getAttribute("userId");
        
 
         Integer idInt = Integer.parseInt(id);
@@ -41,6 +42,7 @@ public class UpdateProductServlet extends HttpServlet {
         product.setName(productName);
         product.setCategory_id(categoryId);
         product.setPrice(price);
+        product.setUserId(userId);
         ProductService ps=new ProductService();
         
        try {

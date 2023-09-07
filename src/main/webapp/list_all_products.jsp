@@ -87,7 +87,9 @@
 	<%
 	//Set<Product> listProducts = productList.listAllProduct();
 	
-	Set<Product> productlist=(Set<Product>)request.getAttribute("productDetails");
+	int userId=(Integer) request.getSession().getAttribute("userId");
+	
+	Set<Product> productlist=new ProductService().findProductByUsertId(userId);
 	%>
 	<table border=1>
 		<tr>
@@ -106,9 +108,10 @@
 			<td><%= products.getCategory_id() %></td>
 			<td><%= products.getPrice()%></td>
 			<td>
+			
 			<a href="product/details?id=<%= products.getId()%>">
             	<button class="view" type="submit">View</button>
-            	</a>
+            </a>
             </td>
             <td>
             <a href="product/edit?id=<%=products.getId() %>">
