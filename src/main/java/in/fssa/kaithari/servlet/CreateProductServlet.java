@@ -39,7 +39,7 @@ public class CreateProductServlet extends HttpServlet {
         product.setPrice(Price);
         product.setCategory_id(categoryId);
         product.setUserId(userId);
-   
+
 		try {
 			productservice.createProduct(product);
 			response.sendRedirect(request.getContextPath()+"/list_all_products");
@@ -48,7 +48,6 @@ public class CreateProductServlet extends HttpServlet {
 			e.printStackTrace();
 			out.println(e.getMessage());
 		} 
-
 	}
 
 }
