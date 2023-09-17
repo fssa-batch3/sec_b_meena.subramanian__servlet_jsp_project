@@ -100,6 +100,24 @@
   	<description></description>
   	<servlet-class>in.fssa.kaithari.servlet.UserLogged</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>SellerLoginServlet</servlet-name>
+  	<display-name>SellerLoginServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.SellerLoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>NewSellerServlet</servlet-name>
+  	<display-name>NewSellerServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.NewSellerServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>CreateSellerServlet</servlet-name>
+  	<display-name>CreateSellerServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.CreateSellerServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ProductCreateServlet</servlet-name>
   	<url-pattern>/ProductCreateServlet</url-pattern>
@@ -163,5 +181,17 @@
   <servlet-mapping>
   	<servlet-name>UserLogged</servlet-name>
   	<url-pattern>/UserLogged</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SellerLoginServlet</servlet-name>
+  	<url-pattern>/SellerLoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>NewSellerServlet</servlet-name>
+  	<url-pattern>/NewSellerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CreateSellerServlet</servlet-name>
+  	<url-pattern>/CreateSellerServlet</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -19,42 +19,55 @@ import in.fssa.kaithari.service.ProductService;
 public class UpdateProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		String id=request.getParameter("id");
-	    int categoryId =Integer.parseInt(request.getParameter("categoryId"));
-	    int price =Integer.parseInt(request.getParameter("Price"));
-      	String description = request.getParameter("description");
-        String productName = request.getParameter("product_name");
-        int userId = (Integer)request.getSession().getAttribute("userId");
-       
+		Product product = new Product();
 
-        Integer idInt = Integer.parseInt(id);
+		String id = request.getParameter("id");
 
-        
-        Product product = new Product();
-        product.setId(idInt);
-        product.setDescription(description);
-        product.setName(productName);
-        product.setCategory_id(categoryId);
-        product.setPrice(price);
-        product.setUserId(userId);
-        ProductService ps=new ProductService();
-        
-       try {
-    	   ps.updateProduct(idInt, product);
-		response.sendRedirect(request.getContextPath()+"/list_all_products");
-	} catch (ServiceException e) {
-		e.printStackTrace();
-		throw new ServletException(e.getMessage());
-	} catch (ValidationException e) {
-		e.printStackTrace();
-		throw new ServletException(e.getMessage());
-	}
-	
+		String name = request.getParameter("product_name");
+		String description = request.getParameter("description");
+		int price = Integer.parseInt(request.getParameter("Price"));
+		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+		String image = request.getParameter("image");
+		int offers = Integer.parseInt(request.getParameter("offer"));
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
+		int length = Integer.parseInt(request.getParameter("length_radio"));
+		String designName = request.getParameter("Design");
+		String jarigai = request.getParameter("jarigai");
+		int sellerId = (Integer) request.getSession().getAttribute("sellerId");
+
+		product.setName(name);
+		product.setDescription(description);
+		product.setPrice(price);
+		product.setCategory_id(categoryId);
+		product.setSellerId(sellerId);
+		product.setDesignName(designName);
+		product.setImage(image);
+		product.setJarigai(jarigai);
+		product.setLength(length);
+		product.setOffers(offers);
+		product.setQuantity(quantity);
+
+		Integer idInt = Integer.parseInt(id);
+
+		ProductService ps = new ProductService();
+
+		try {
+			ps.updateProduct(idInt, product);
+			response.sendRedirect(request.getContextPath() + "/list_all_products");
+		} catch (ServiceException e) {
+			e.printStackTrace();
+			throw new ServletException(e.getMessage());
+		} catch (ValidationException e) {
+			e.printStackTrace();
+			throw new ServletException(e.getMessage());
+		}
+
 	}
 }

@@ -25,7 +25,7 @@ public class FindByProductIdServlet extends HttpServlet {
             Product product = productservice.findProductById(productId);
             if (product != null) {
                 request.setAttribute("productDetails", product);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/seller products/seller products.jsp");
                 dispatcher.forward(request, response);
             } else {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Product not found");

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import in.fssa.kaithari.exception.ServiceException;
+import in.fssa.kaithari.exception.ValidationException;
 import in.fssa.kaithari.model.User;
 import in.fssa.kaithari.service.UserService;
 
@@ -20,14 +21,6 @@ import in.fssa.kaithari.service.UserService;
 public class CreateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CreateUserServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -47,16 +40,14 @@ public class CreateUserServlet extends HttpServlet {
         user.setEmail(email);
         user.setPassword(password);
         
-        
         try {
 			userService.create(user);
-			 response.sendRedirect(request.getContextPath()+"/index.jsp");
-		} catch (ServiceException e) {
+			 response.sendRedirect(request.getContextPath()+"/logion page.jsp");
+			 
+		} catch (ServiceException | ValidationException e) {
 			e.printStackTrace();
 			out.println(e.getMessage());
 		} 
-       
-        
 	}
 
 }

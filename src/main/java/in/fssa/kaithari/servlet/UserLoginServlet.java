@@ -23,8 +23,10 @@ import in.fssa.kaithari.service.UserService;
 @WebServlet("/user/login")
 public class UserLoginServlet extends HttpServlet {
 	  private static final long serialVersionUID = 1L;
+	  
+	  
 	    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	        RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+	        RequestDispatcher rd = request.getRequestDispatcher("/logion page.jsp");
 	        rd.forward(request, response);  
 	    }
 	    
@@ -44,7 +46,7 @@ public class UserLoginServlet extends HttpServlet {
 	                System.out.println("Login Successfull:)");
 	                int id = user.getId();
 	                request.getSession().setAttribute("userId", id); 
-	                response.sendRedirect(request.getContextPath() + "/list_all_products");
+	                response.sendRedirect(request.getContextPath() + "/index.jsp");
 	            }
 	           
 	        } catch (ServiceException e) {

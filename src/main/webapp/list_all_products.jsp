@@ -1,11 +1,17 @@
+<%@page import="com.fasterxml.jackson.databind.ObjectMapper"%>
 <%@page import="java.util.Set"%>
 <%@page import="in.fssa.kaithari.service.ProductService"%>
 <%@page import="in.fssa.kaithari.model.Product"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+<%@ page import="com.fasterxml.*" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/Seller product list.css">
 <meta charset="utf-8">
 <style>
     body {
@@ -75,11 +81,54 @@
             text-decoration: none;
         }
 </style>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/seller products/Seller product list.css">
 
 </head>
 <body>
+        <header>
+            <div class="logo">
+                <a href="<%=request.getContextPath() %>/index.jsp">
+                    <img src="<%=request.getContextPath() %>/assets/img/image-removebg-preview.png" alt="logo" width="100px" height="80px">
+                </a>
+            </div>
 
-<a href="NewProductServlet"><button type="submit">Add Product</button></a>
+            <div class="back">
+                <a href="<%=request.getContextPath() %>/seller/seller login.jsp">
+                    <button>Back</button>
+                </a>
+            </div>
+
+            <h2>PRODUCTS</h2>
+        
+            <div class="navigations">
+
+                <div class="search">
+                    <input type="search" placeholder="search">
+                </div>
+
+                <div class="new">
+                    <a href="<%=request.getContextPath() %>/product/new">
+                        <button>Create New</button>
+                    </a>
+                </div>
+
+                <div class="accound">
+                    <a href="<%=request.getContextPath() %>/seller/Seller profile.jsp">
+                        <i class="fa fa-user-circle-o"style="font-size:24px;color: black;"></i>
+                    </a>
+                </div>
+
+                <di
+                v class="order">
+                    <a href="<%=request.getContextPath() %>/seller products/seller_shipping_page.jsp">
+                        <img class="order_img" src="<%=request.getContextPath() %>/assets/img/Seller order bag.png">
+                    </a>
+                </div>
+
+            </div>
+        </header>
+
+
 
     <%
 	ProductService productList = new ProductService();
@@ -87,46 +136,181 @@
 	<%
 	//Set<Product> listProducts = productList.listAllProduct();
 	
-	int userId=(Integer) request.getSession().getAttribute("userId");
-	
-	Set<Product> productlist=new ProductService().findProductByUsertId(userId);
+	int sellerId=(Integer) request.getSession().getAttribute("sellerId");
+	//int sellerId = 4;
+	Set<Product> productlist=new ProductService().findProductBySellerId(sellerId);
 	%>
-	<table border=1>
-		<tr>
-			<th>Id</th>
-			<th>Name</th>
-			<th>Description</th>
-			<th>CategoryId</th>
-			<th>Price</th>
-			
-		</tr>
-		<% for(Product products : productlist){ %>
-		<tr>
-			<td><%= products.getId() %></td>
-			<td><%= products.getName() %></td>
-			<td><%= products.getDescription() %></td>
-			<td><%= products.getCategory_id() %></td>
-			<td><%= products.getPrice()%></td>
-			<td>
-			
-			<a href="product/details?id=<%= products.getId()%>">
-            	<button class="view" type="submit">View</button>
-            </a>
-            </td>
-            <td>
-            <a href="product/edit?id=<%=products.getId() %>">
-            <button  class="update" type="submit">Update</button>
-            </a>
-            	
-            </td>
-            <td>
-                <a href="product/delete?id=<%=products.getId() %>">
-            	<button class="delete" type="submit">Delete</button>
-            	</a>
-            </td>
-		</tr>
-		<% } %>
-	</table>
+	
+	
+	<div class="hol">
+	
+	
+	
+	</div>
+	
+	
+	<!--  <div class="wat">
+                    <img src="../../assets/img/10.jpeg" alt="photo" width="150" height="150" />
+                    <div class="product-content">
+                    <h3 class="product-name">Kanchipuram Saree</h3>
+                    <p class="rate">Rs. 6000 </p>
+                    <s class="s1">Rs. 6,500</s>
+                    <div class="star">
+                    <i class="fa fa-star" style="font-size:24px"></i>
+                    <i class="fa fa-star" style="font-size:24px"></i>
+                    <i class="fa fa-star" style="font-size:24px"></i>
+                    <i class="fa fa-star-o" style="font-size:24px"></i>
+                    <i class="fa fa-star-o" style="font-size:24px"></i>
+
+                    </div> -->
+<script>
+   // const saree_list = [
+//   {
+//     image: { src: "../../assets/img/10.jpeg", alt: "photo" },
+//     name: "Kanchivaram Saree",
+//     price: { actual: "₹ 7500", current: "₹ 5200" },
+//         link: "../seller products/seller products.html",
+//   },
+
+   var product_upload = <%= new ObjectMapper().writeValueAsString(productlist) %>;
+   
+   console.log(product_upload);
+	
+	// JSON.parse(localStorage.getItem("product_crud"));
+    // console.log(product_upload);
+   // const uniqueID_seller = JSON.parse(localStorage.getItem("uniqueID_seller"));
+   
+   
+   
+for (let i = 0; i < product_upload.length; i++) {
+	
+	console.log("1");
+ 
+       //<div class=wat> </div>
+       const div_wat = document.createElement("div");
+       div_wat.setAttribute("class", "wat");
+       console.log(div_wat);
+       // link for next page
+       const locateUser = document.createElement("a");
+       locateUser.setAttribute(
+         "href","product/details?id="+product_upload[i].id
+       );
+       locateUser.setAttribute("style", "text-decoration: none;color:black ");
+       div_wat.append(locateUser);
+
+       //<img> <img>
+       const img_pic = document.createElement("img");
+       img_pic.setAttribute("src", product_upload[i].image);
+      //  img_pic.setAttribute("alt", product_upload[i].uppic);
+       img_pic.setAttribute("height", "150px");
+       img_pic.setAttribute("width", "150px");
+       locateUser.append(img_pic);
+       //<div class=product_content> </div>
+       const div_product_content = document.createElement("div");
+       div_product_content.setAttribute("class", "product-content");
+       locateUser.append(div_product_content);
+       // <h3 class=product-name> </h3>
+       const h3_product_name = document.createElement("h3");
+       h3_product_name.setAttribute("class", "product-name");
+       h3_product_name.innerHTML = product_upload[i].name;
+       div_product_content.append(h3_product_name);
+       // <p class=rate> </p>
+       const p_rate = document.createElement("p");
+       p_rate.setAttribute("class", "rate");
+       p_rate.innerHTML = `₹${product_upload[i].price}`;
+       div_product_content.append(p_rate);
+       //  <s class=s1> </s>
+       const s_s1 = document.createElement("s");
+       s_s1.setAttribute("class", "s1");
+       s_s1.innerHTML = `₹${product_upload[i].price}`;
+       div_product_content.append(s_s1);
+       //  <div class=star> </div>
+       const div_star = document.createElement("div");
+       div_star.setAttribute("class", "star");
+       div_product_content.append(div_star);
+       // a button
+       const a_but = document.createElement("a");
+       a_but.setAttribute("href", "");
+       div_product_content.append(a_but);
+       // <button class=buy> </buy>
+       const button_buy = document.createElement("button");
+       button_buy.setAttribute("class", "buy");
+       a_but.append(button_buy);
+       //  <strong> </strong>
+       const strong = document.createElement("strong");
+       strong.innerHTML = "Remove";
+       button_buy.append(strong);
+       // a button
+       const a_but_1 = document.createElement("a");
+       a_but_1.setAttribute("href", "");
+       div_product_content.append(a_but_1);
+       // <button> </buy>
+       const button_buy_1 = document.createElement("button");
+       button_buy_1.setAttribute("class", "run");
+       button_buy_1.setAttribute("data-uuid", product_upload[i].id);
+       a_but.append(button_buy_1);
+       // <strong> </strong>
+       const strg = document.createElement("strong");
+       strg.innerHTML = "Add";
+       button_buy_1.append(strg);
+       document.querySelector("div.hol").append(div_wat);
+       
+  }
+
+
+const add = document.querySelectorAll("button.run");
+   add.forEach((findId) => {
+     findId.addEventListener("click", function on() {
+       const id = this.dataset.uuid;
+       const display_products =
+         JSON.parse(localStorage.getItem("add_products")) || [];
+       const exist =
+         display_products.length &&
+         JSON.parse(localStorage.getItem("add_products")).some(
+           (data) => data === id
+         );
+       if (!exist) {
+         display_products.push(id);
+         localStorage.setItem("add_products", JSON.stringify(display_products));
+         alert("Product is added to the page");
+       } else {
+         alert("Product is already added");
+       }
+       window.location.href = "../assets/products/product_list saree.jsp";
+     });
+});
+   const remove = document.querySelectorAll("button.buy");
+   remove.forEach((findId) => {
+     findId.addEventListener("click", function buyButton() {
+       const parentBox = this.closest(".product-content");
+       const id = parentBox.querySelector(".run").getAttribute("data-uuid");
+
+       function find_data(e) {
+         return e === id;
+       }
+       const delete_ids = JSON.parse(localStorage.getItem("add_products")) || [];
+   
+       const exist =
+         delete_ids.length &&
+         JSON.parse(localStorage.getItem("add_products")).some(
+           (data) => data.product_uuid === id
+         );
+       if (!exist) {
+         alert("This product is removed from the page");
+
+         const uuid = JSON.parse(localStorage.getItem("add_products"));
+
+         const remove_id = uuid.find(find_data);
+         console.log(remove_id);
+         const indexOfUser = uuid.indexOf(remove_id);
+         uuid.splice(indexOfUser, 1);
+         localStorage.setItem("add_products", JSON.stringify(uuid));
+       } else {
+         alert("This product is not added yet!");
+       }
+     });
+});
+ </script>
 </body>
 </html>
 

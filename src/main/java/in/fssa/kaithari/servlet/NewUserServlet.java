@@ -16,19 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 public class NewUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public NewUserServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/user_register.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/register page.jsp");
 		rd.forward(request, response);	}
 
 

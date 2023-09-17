@@ -32,11 +32,11 @@ public class ListAllProductsServlet extends HttpServlet {
 		try {
 			 //HttpSession session = request.getSession();
 
-			int id=(Integer) request.getSession().getAttribute("userId");
+			int id=(Integer) request.getSession().getAttribute("sellerId");
 		        
 		      
 		 ProductService productService = new ProductService();
-			Set<Product> product = productService.findProductByUsertId(id);
+			Set<Product> product = productService.findProductBySellerId(id);
 			request.setAttribute("productDetails", product);
 			RequestDispatcher rd = request.getRequestDispatcher("/list_all_products.jsp");
 			rd.forward(request, response);

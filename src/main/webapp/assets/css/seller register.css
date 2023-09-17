@@ -1,0 +1,119 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+	text-decoration: none;	
+}
+
+
+
+.new{
+	display: flex;
+	margin-top:40px;
+	
+}
+
+.total{
+	margin-left: 200px;
+	margin-top: 50px;
+
+    
+}
+
+h1{
+	font-size: 40px;
+}
+
+input[type=email],input[type=password]{
+    border-radius: 5px;
+	border-color: transparent;
+	background-color:#eaecef;
+    outline: none;
+    padding:13px;
+    width:420px;
+    margin-bottom:20px;
+	font-size: 16px;
+  
+}
+
+input[type=text]{
+	border-radius: 5px;
+	border-color: transparent;
+	background-color:#eaecef;
+    outline: none;
+    padding:13px;
+    width:420px;
+    margin-bottom:20px;
+	font-size: 16px;	
+}
+
+
+
+.photo{
+	border-radius: 5px;
+	border-color: transparent;
+	background-color:#eaecef;
+    outline: none;
+    padding:13px;
+    width:420px;
+    margin-bottom:20px;
+	font-size: 16px;
+}
+
+.Weaving{
+	margin-left: -21rem;
+    opacity: 0;
+	
+}
+
+.submit{
+    padding:3px;
+    width:85px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-color: cadetblue;
+    margin-top: 20px;
+	/* margin-left:240px; */
+	cursor: pointer;
+}
+
+.pass p {
+	width: 500px;
+}
+
+.log{
+    margin-top: 30px;
+	cursor: pointer;
+}
+
+.log a{
+    text-decoration: underline;
+	margin-left: 5px;
+}
+
+.submit:hover{
+	scale: 1.04;
+	background-color: crimson;
+	color: white;
+}
+
+.login:hover{
+	scale: 1.04;
+	background-color: crimson;
+	color: white;
+}
+
+.img{
+    margin-top:220px;
+    margin-left:150px;
+    
+}
+.check_img{
+	margin-left: 50px;
+    /* margin-top: 8px; */
+    margin-bottom: -10px;
+}
+.check_img2{
+	margin-left: 30px;
+    
+}
