@@ -19,8 +19,9 @@ public class NewUserServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request.getRequestDispatcher("/register page.jsp");
-		rd.forward(request, response);	}
-
+		rd.forward(request, response);	
+		
+	}
 
 
 }

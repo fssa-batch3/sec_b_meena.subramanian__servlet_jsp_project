@@ -118,6 +118,78 @@
   	<description></description>
   	<servlet-class>in.fssa.kaithari.servlet.CreateSellerServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>ListAllSareesServlet</servlet-name>
+  	<display-name>ListAllSareesServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.ListAllSareesServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ListAllDhotiesServlet</servlet-name>
+  	<display-name>ListAllDhotiesServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.ListAllDhotiesServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UserProfileServlet</servlet-name>
+  	<display-name>UserProfileServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.UserProfileServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>FindByUserProductServlet</servlet-name>
+  	<display-name>FindByUserProductServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.FindByUserProductServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SellerProfileServlet</servlet-name>
+  	<display-name>SellerProfileServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.SellerProfileServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>EditSellerProfileServlet</servlet-name>
+  	<display-name>EditSellerProfileServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.EditSellerProfileServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AddressEditServlet</servlet-name>
+  	<display-name>AddressEditServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.AddressEditServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UpdateAddressServlet</servlet-name>
+  	<display-name>UpdateAddressServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.UpdateAddressServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ProductBuyNowServlet</servlet-name>
+  	<display-name>ProductBuyNowServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.ProductBuyNowServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>MyOrdersServlet</servlet-name>
+  	<display-name>MyOrdersServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.MyOrdersServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>UserLogOutServlet</servlet-name>
+  	<display-name>UserLogOutServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.UserLogOutServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>SellerLogoutServlet</servlet-name>
+  	<display-name>SellerLogoutServlet</display-name>
+  	<description></description>
+  	<servlet-class>in.fssa.kaithari.servlet.SellerLogoutServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>ProductCreateServlet</servlet-name>
   	<url-pattern>/ProductCreateServlet</url-pattern>
@@ -193,5 +265,53 @@
   <servlet-mapping>
   	<servlet-name>CreateSellerServlet</servlet-name>
   	<url-pattern>/CreateSellerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ListAllSareesServlet</servlet-name>
+  	<url-pattern>/ListAllSareesServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ListAllDhotiesServlet</servlet-name>
+  	<url-pattern>/ListAllDhotiesServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserProfileServlet</servlet-name>
+  	<url-pattern>/UserProfileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>FindByUserProductServlet</servlet-name>
+  	<url-pattern>/FindByUserProductServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SellerProfileServlet</servlet-name>
+  	<url-pattern>/SellerProfileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>EditSellerProfileServlet</servlet-name>
+  	<url-pattern>/EditSellerProfileServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddressEditServlet</servlet-name>
+  	<url-pattern>/AddressEditServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UpdateAddressServlet</servlet-name>
+  	<url-pattern>/UpdateAddressServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ProductBuyNowServlet</servlet-name>
+  	<url-pattern>/ProductBuyNowServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MyOrdersServlet</servlet-name>
+  	<url-pattern>/MyOrdersServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserLogOutServlet</servlet-name>
+  	<url-pattern>/UserLogOutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SellerLogoutServlet</servlet-name>
+  	<url-pattern>/SellerLogoutServlet</url-pattern>
   </servlet-mapping>
 </web-app>

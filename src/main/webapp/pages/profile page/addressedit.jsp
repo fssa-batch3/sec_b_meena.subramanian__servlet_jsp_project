@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="in.fssa.kaithari.model.User"%>
 <html lang="en">
 
 <head>
@@ -7,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Address Edit Page</title>
 
-    <link rel="stylesheet" href="/assets/css/address from.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/address from.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,31 +23,34 @@
      <header>
 <jsp:include page="/header.jsp" />
 </header>
+<%
+User user = (User) request.getAttribute("editAddress");
+%>
     <div class="h1">
         <h1 class="heading"> Edit Your Address </h1>
     </div>
-    <form>
+    <form action="update" method="POST">
         <!-- <div class="total"> -->
         <div class="form-group">
-            <input type="text" class="form-control" id="inputName" pattern="[a-zA-Z0-9]+" placeholder="Name" required>
+            <input type="text" class="form-control"  name = "name" id="inputName" value = "<%=user.getName() %>" pattern="[a-zA-Z0-9]+" placeholder="Name" required>
 
-            <input type="text" class="form-control" id="inputStreet" placeholder="Street" required>
+            <input type="text" class="form-control" name = "address"  id="inputStreet" value = "<%=user.getAddress() %>" placeholder="Street" required>
 
-            <input type="text" class="form-control" id="inputCity" placeholder="Town" required>
+            <input type="text" class="form-control" name = "village"  id="inputCity"  value = "<%=user.getVillage() %>"placeholder="Town" required>
 
-            <input type="number" class="form-control" id="inputZip" placeholder="Pincode" required>
+            <input type="number" class="form-control" name = "pincode"  id="inputZip"  value = "<%=user.getPincode()%>"placeholder="Pincode" required>
 
-            <input type="text" class="form-control" id="inputCountry" pattern="[a-zA-Z0-9]+" placeholder="city"
+            <input type="text" class="form-control" name = "district"  id="inputCountry"  value = "<%=user.getDistrict()%>"pattern="[a-zA-Z]+" placeholder="city"
                 required>
 
-            <input type="number" class="form-control" id="inputPhone" placeholder="Mobile Number" required>
+            <input type="number" class="form-control" name = "mobile_number"  id="inputPhone" value = "<%=user.getMobileNumber()%>" placeholder="Mobile Number" required>
 
             <div class="butt">
-                <button type="submit" class="Save" onclick="update_address(event)">Save Your Address</button>
+                <button type="submit" class="Save">Save Your Address</button>
             </div>
 
         </div>
-
+</form>
 
         <!-- <div class="image">
                 <input type="number" class="form-control" id="inputPhone" placeholder="Mobile Number" required>
@@ -56,52 +60,6 @@
 
         <!-- </div> -->
 
-        <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
-        <script>
-
-            const params = new URLSearchParams(window.location.search);
-            let id = params.get("id");
-
-
-            const uniqueID_user = JSON.parse(localStorage.getItem("uniqueID_user"));
-            const add_address = JSON.parse(localStorage.getItem("add_address"));
-            const address = add_address.find(e => e.address_uuid == id);
-
-            console.log(address);
-
-            console.log(id)
-
-            document.getElementById("inputStreet").value = address.street;
-            document.getElementById("inputCity").value = address.town;
-            document.getElementById("inputName").value = address.name;
-            document.getElementById("inputZip").value = address.zip;
-            document.getElementById("inputCountry").value = address.country;
-            document.getElementById("inputPhone").value = address.phone;
-
-            function update_address(e) {
-                e.preventDefault();
-
-                const street = document.getElementById("inputStreet").value;
-                const city = document.getElementById("inputCity").value;
-                const name = document.getElementById("inputName").value;
-                const zip = document.getElementById("inputZip").value;
-                const country = document.getElementById("inputCountry").value;
-                const phone = document.getElementById("inputPhone").value;
-
-                address.street = street;
-                address.town = city;
-                address.name = name;
-                address.zip = zip;
-                address.country = country;
-                address.phone = phone;
-
-                localStorage.setItem("add_address", JSON.stringify(add_address));
-                alert("Your address has been updated.");
-                window.location.href = "../profile page/youraddress.jsp";
-            }
-
-
-        </script>
-</body>
+       </body>
 
 </html>

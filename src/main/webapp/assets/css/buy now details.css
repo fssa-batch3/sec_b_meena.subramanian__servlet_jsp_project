@@ -243,7 +243,7 @@ h2{
 }
 
 .right .form_list .form{
-    width: 5rem;
+    width: 9rem;
     margin-top: 20px;
 }
 .right .form_list .form_input{
@@ -251,7 +251,7 @@ h2{
 }
 .right .form_list .form input,.form_input input{
     margin-top: 1px;
-    width: 86px;
+    width: 172px;
     margin-left: 20px
 }
 .right .cash{

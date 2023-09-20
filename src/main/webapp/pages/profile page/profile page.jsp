@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="in.fssa.kaithari.model.User"%>
 <html lang="en">
 
 <head>
@@ -7,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
 
-    <link rel="stylesheet" href="../../assets/css/profile page.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/profile page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +20,7 @@
 
 <body>
 
-    
-     <header>
+<header>
 <jsp:include page="/header.jsp" />
 </header>
 
@@ -41,60 +41,55 @@
     </div>
  -->
 
+<% 
+  User user = (User) request.getAttribute("userDetails");
+%>
 
 
     <section class="profile_details">
         <div class="form">
             <h1 class="heading"> PROFILE </h1>
             <div class="profile">
-                <img class="profile_img" src="../../assets/img/profile.png" alt="photo" width="180px">
+                <img class="profile_img" src="<%=request.getContextPath() %>/assets/img/profile.png" alt="photo" width="180px">
             </div>
             <div class="details">
                 <div class="details_list">
                     <!-- <p class="list">Name:</p> -->
-                    <p class="list" id="name"></p>
+                    <p class="list" id="name" name="name"> <%= user.getName() %> </p>
                 </div>
                 <div class="details_list">
                     <!-- <p class="list">Contact:</p> -->
-                    <p class="list_1" id="phone"></p>
+                    <p class="list_1" id="phone"><%= user.getMobileNumber() %>   </p>
                 </div>
 
                 <div class="details_list">
                     <!-- <p class="list">Email:</p> -->
-                    <p class="list_2" id="email"></p>
+                    <p class="list_2" id="email"> <%= user.getEmail() %> </p>
                 </div>
 
+				<div class="details_list"> 
+                <!-- <p class="list">District:</p> -->
+                <p class="list_4" id="address"><%= user.getAddress() %> </p>
+                    </div> 
+                    <div class="details_list">
+                    <!-- <p class="list">Address:</p> -->
+                    <p class="list_4" id="Village"><%= user.getVillage() %>,<%= user.getPincode() %></p>
+                </div>
                 <div class="details_list">
                     <!-- <p class="list">Address:</p> -->
-                    <p class="list_4" id="district"></p>
+                    <p class="list_4" id="district"><%= user.getDistrict()%> </p>
                 </div>
-
-                <!-- <div class="details_list"> -->
-                <!-- <p class="list">District:</p> -->
-                <!-- <p class="list_4" id="district"></p>
-                    </div> -->
-
-                <!-- <div class="details_list"> -->
-                <!-- <p class="list">D.O.B:</p> -->
-                <!-- <p class="list_5" id="dob"></p>
-                </div> -->
-
             </div>
             <div class="buttons">
-                <!-- <a href="../profile page/profile edit page.html"> -->
-                <button class="edit-btn">
-                    <strong>EDIT</strong>
-                </button>
-                <!-- </a> -->
-                <a href="../index.jsp">
+                <a href="/user/logout">
                     <button onclick="logOut()" class="log">
                         <strong>LOG OUT</strong>
                     </button>
                 </a>
 
-                <button id="add" class="address ">
+                <button id="add" class="address">
                     <strong>
-                        Address</strong>
+                       <a href="/kaithariweb/address/edit"> Address Edit</a></strong>
                 </button>
 
             </div>
@@ -168,12 +163,10 @@
                 localStorage.removeItem("uniqueID_user");
                 alert("Sucessfully Logged out!");
             }
-            window.location.href = "../../index.jsp";
+            window.location.href = "<%=request.getContextPath() %>/index.jsp";
         }
 
-        document.getElementById("add").addEventListener("click", function () {
-            window.location.href = "../profile page/youraddress.jsp"
-        })
+     
 
 
 
@@ -210,9 +203,9 @@
 
 
 
-        // function edit() {
-        //     document.getElementById("myform").style.display = "none";
-        // }
+         function edit() {
+            document.getElementById("myform").style.display = "none";
+         }
     </script>
 
 </body>

@@ -9,8 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import in.fssa.kaithari.exception.ServiceException;
 import in.fssa.kaithari.exception.ValidationException;
 import in.fssa.kaithari.model.User;
 import in.fssa.kaithari.service.UserService;
@@ -41,19 +39,18 @@ public class UserLoginServlet extends HttpServlet {
 	            if (user == null) {
 	                System.out.println("User not found");
 	            } else if (!password.equals(user.getPassword())) {
-	                System.out.println("Incorrect email number or Password:(");
+	                throw new ValidationException("invalid password");
 	            } else {
 	                System.out.println("Login Successfull:)");
 	                int id = user.getId();
 	                request.getSession().setAttribute("userId", id); 
-	                response.sendRedirect(request.getContextPath() + "/index.jsp");
+	                response.sendRedirect(request.getContextPath()+"/index.jsp");
 	            }
 	           
-	        } catch (ServiceException e) {
+	        } catch (Exception e) {
 	            e.printStackTrace();
-	        } catch (ValidationException e) {
-	            e.printStackTrace();
-	        }
+	            response.sendRedirect(request.getContextPath()+"/logion page.jsp");
+	        } 
 	    }
 	    
 

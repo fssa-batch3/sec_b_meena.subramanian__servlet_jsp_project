@@ -14,8 +14,9 @@
 }
 
 .total{
+	overflow: scroll;
 	margin-left: 200px;
-	margin-top: 170px;
+	margin-top: 40px;
 
     
 }
@@ -35,6 +36,16 @@ input[type=email],input[type=password]{
 	font-size: 16px;
   
 }
+.number_in{
+	border-radius: 5px;
+	border-color: transparent;
+	background-color:#eaecef;
+    outline: none;
+    padding:13px;
+    width:420px;
+    margin-bottom:20px;
+	font-size: 16px;
+}
 
 input[type=text]{
 	border-radius: 5px;
@@ -45,11 +56,7 @@ input[type=text]{
     width:420px;
     margin-bottom:20px;
 	font-size: 16px;
-
-	
 }
-
-
 
 .submit{
     padding:3px;
@@ -89,8 +96,30 @@ input[type=text]{
 }
 
 .img{
+	    right: 60px;
+    position: fixed;
     margin-top:220px;
     margin-left:150px;
     
 }
 
+ /* scroll hide */
+
+  ::-webkit-scrollbar {
+    width: 0.5rem; /* Width of the scrollbar (adjust as needed) */
+}
+
+/* Track (the area behind the thumb) */
+::-webkit-scrollbar-track {
+    background-color: transparent; /* Make the track background transparent */
+}
+
+/* Thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Make the thumb transparent */
+}
+
+/* Hide the scrollbar buttons (arrows) */
+::-webkit-scrollbar-button {
+    display: none;
+}

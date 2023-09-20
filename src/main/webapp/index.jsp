@@ -18,11 +18,11 @@
 </head>
 
 <body>
-<header>
-<jsp:include page="/header.jsp" />
-</header>
+	<header>
+		<jsp:include page="/header.jsp" />
+	</header>
 
-    <section class="adds">
+	<section class="adds">
         <div class="content">
             <h4>Weave Your Dream Look</h4>
             <p>
@@ -189,7 +189,7 @@
             //  <s class=s1> </s>
             const s_s1 = document.createElement("s");
             s_s1.setAttribute("class", "s1");
-            s_s1.innerHTML ="₹"+ product[i].productprice;
+            s_s1.innerHTML ="Rs : "+ product[i].productprice;
             div_product_content.append(s_s1);
             //  <div class=star> </div>
             const div_star = document.createElement("div");

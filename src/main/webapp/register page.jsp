@@ -14,16 +14,38 @@
             <section class="total">
                 <p> Start For Free</p>
                 <h1>Create New Account</h1>
-                <form action="<%=request.getContextPath() %>/user/create" method="post">
+                <form action="create" method="post">
                     <div class="name" style="margin-top: 30px;">
 
                         <input type="text" name="name" id="name" placeholder="Name" value="Meena" pattern="[a-zA-Z0-9]+" required>
                     </div>
-
-                    <div class="mail" style="margin-top: 15px;">
+                     <div class="mail" style="margin-top: 15px;">
 
                         <input type="email" name = "email" placeholder="Email" id="email"
                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="vasumeena2004@gmail.com" required>
+                    </div>
+                     <div class="mobile_number" style="margin-top: 30px;">
+
+                        <input type="number" name="mobile_number" class="number_in" id="name" placeholder="Mobile Number"  pattern="[0-9]{,10}" required>
+                    </div>
+                      <div class="address" style="margin-top: 30px;">
+
+                        <input type="text" name="address" id="name" placeholder="32/21,Bajanai Madam Street"  pattern="[A-Za-z0-9\s,/-]+" required>
+                    </div>
+                    
+                    <div class="district" style="margin-top: 30px;">
+
+                        <input type="text" name="district" id="name" placeholder="District" pattern="[a-zA-Z0-9]+" required>
+                    </div>
+                    
+                    <div class="village" style="margin-top: 30px;">
+
+                        <input type="text" name="village" id="name" placeholder="Village"  pattern="[a-zA-Z0-9]+" required>
+                    </div>
+
+                    <div class="pincode" style="margin-top: 30px;">
+
+                        <input type="number" name="pincode" id="name" class="number_in" placeholder="Pincode"  pattern="[0-9]+" required>
                     </div>
 
                     <div class="pass" style="margin-top: 15px;">

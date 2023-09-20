@@ -1,3 +1,4 @@
+C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\ListAllDhotiesServlet.java
 C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\CreateUserServlet.java
 C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\NewSellerServlet.java
 C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\DeleteProductServlet.java
@@ -5,10 +6,15 @@ C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\ser
 C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\EditProductServlet.java
 C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\UpdateProductServlet.java
 C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\UserLoginServlet.java
+C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\EditSellerProfileServlet.java
 C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\NewUserServlet.java
 C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\SellerLoginServlet.java
+C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\UserProfileServlet.java
 C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\ListAllProductsServlet.java
+C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\SellerProfileServlet.java
 C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\NewProductServlet.java
 C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\CreateSellerServlet.java
+C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\ListAllSareesServlet.java
 C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\AddProductServlet.java
 C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\FindByProductIdServlet.java
+C:\software\eclipse_IDE_workspace\kaithariweb\src\main\java\in\fssa\kaithari\servlet\FindByUserProductServlet.java

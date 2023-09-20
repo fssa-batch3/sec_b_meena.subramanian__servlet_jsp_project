@@ -35,19 +35,34 @@ public class CreateUserServlet extends HttpServlet {
 		String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        long mobile_number =Long.parseLong(request.getParameter("mobile_number"));
+        String district = request.getParameter("district");
+        String address = request.getParameter("address");
+        String village = request.getParameter("village");
+        int pincode = Integer.parseInt(request.getParameter("pincode"));
+ 
         
         user.setName(name);
         user.setEmail(email);
         user.setPassword(password);
+        user.setDistrict(district);
+        user.setPincode(pincode);
+        user.setVillage(village);
+        user.setMobileNumber(mobile_number);
+        user.setAddress(address);
+        
+       
+        
+        
+        
         
         try {
 			userService.create(user);
-			 response.sendRedirect(request.getContextPath()+"/logion page.jsp");
+			 response.sendRedirect(request.getContextPath()+"/user/login");
 			 
 		} catch (ServiceException | ValidationException e) {
 			e.printStackTrace();
 			out.println(e.getMessage());
 		} 
 	}
-
 }
