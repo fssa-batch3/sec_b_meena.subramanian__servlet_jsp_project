@@ -1,93 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Seller Register </title>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seller Register</title>
 
-        <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/seller register.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Nerko+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/assets/css/seller register.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Nerko+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+	rel="stylesheet">
 
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <!-- <script src="../../JS/default_products.js"></script> -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- <script src="../../JS/default_products.js"></script> -->
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <section class="new">
-            <section class="total">
-                <p> Start For Free</p>
-                <h1>Create New Account</h1>
-                <form role="form" action="create" method="post">    
-                    <div class="name" style="margin-top: 30px;">
-    
-                        <input type="text" name = "name" id="name" placeholder="Name" pattern="[a-zA-Z0-9]+"value="Meena" required>
-                    </div>
-  
-                    <div class="mail" style="margin-top: 15px;">
+	<section class="new">
+		<section class="total">
+			<p>Start For Free</p>
+			<h1>Create New Account</h1>
+			<form role="form" action="<%=request.getContextPath()%>/seller/create" method="post">
+				<div class="name" style="margin-top: 30px;">
 
-                        <input type="email" name="email" placeholder="abcd@13u824.gmail.com" id="email" value="vasumeena2004@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
-                    </div>
+					<input type="text" name="name" id="name" placeholder="Name"
+						pattern="[a-zA-Z0-9]+" value="Meena" required>
+				</div>
 
-                    <div class="photo" style="margin-top: 15px;">
-                      <label>Click Here Choose Your ID CARD Image</label>
-                      <input type="file" name="proof_image" class="Weaving" id="card_img_upload" >
-                      <img src="" id="imgBox2" style="display: none;" alt="">
-                 
-                        <img class="check_img" src="../../assets/img/icon/grey_style.gif" style="display: none;" width="30px" height="30px" id="card_load" alt="">
-                        <img class="check_img2" src="../../assets/img/icon/check-mark.png" style="display: none;" width="20px" height="20px" id="card_check" alt="">
-              
+				<div class="mail" style="margin-top: 15px;">
 
-                   </div>
+					<input type="email" name="email"
+						placeholder="abcd@13u824.gmail.com" id="email"
+						value="vasumeena2004@gmail.com"
+						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+				</div>
 
-                  <div class="photo" style="margin-top: 15px;">
-                    <label>Click Here Choose Your Weaving Image</label>
-                    <input type="file" name="id_image" class="Weaving" id="photo_img_upload" >
+				<div class="mobile_number" style="margin-top: 30px;">
 
-                                     
-                    <img class="check_img"  src="../../assets/img/icon/grey_style.gif" style="display: none;" width="30px" height="30px" id="photo_load" alt="">
-                    <img class="check_img2" src="../../assets/img/icon/check-mark.png" style="display: none;" width="20px" height="20px" id="photo_check" alt="">
-        
-                </div>
+					<input type="number" name="mobile_number" class="number_in"
+						id="name" placeholder="Mobile Number" pattern="[0-9]{,10}"
+						required>
+				</div>
+				<div class="address" style="margin-top: 30px;">
 
-                    <div class="pass" style="margin-top: 15px;">
-    
-                        <input type="password" name="password" id="password" placeholder="Password"value="Meenu@2343" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-                    </div>
+					<input type="text" name="address" id="name"
+						placeholder="32/21,Bajanai Madam Street"
+						pattern="[A-Za-z0-9\s,/-]+" required>
+				</div>
 
-                    <div class="pass" style="margin-top: 15px;">
+				<div class="district" style="margin-top: 30px;">
 
-                        <input type="password" name="confirm_password" id="confirm_password" class="passs" value="Meenu@2343" placeholder="Confirm Password" required>
-                    </div>
-                    <p style="font-size: 13px;"> Pattern : Minimum 8 characters include Uppercase,<br>  Lowercase, Number and Special characters. </p>
-                    <button class="submit" type="submit">
-                        <b>Submit</b>
-                    </button>
-                    <div class="log">
-                        <p>
-                            you already have a account<a href="<%=request.getContextPath() %>/seller/login" style="color: rgb(71, 159, 118);">Login</a>
-                        </p>
-                    </div>
-                    <!-- <a onclick="loginpage()" style="color:black;"><button class="login"><b>login</b></button></a> -->
+					<input type="text" name="district" id="name" placeholder="District"
+						pattern="[a-zA-Z0-9]+" required>
+				</div>
 
-                </form>
+				<div class="village" style="margin-top: 30px;">
 
-            </section>
+					<input type="text" name="village" id="name" placeholder="Village"
+						pattern="[a-zA-Z0-9]+" required>
+				</div>
 
-            <section class="img">
-                <img src="<%=request.getContextPath() %>/assets/img/Untitled-removebg-preview.png" alt="img">
-            </section>
+				<div class="pincode" style="margin-top: 30px;">
 
-        </section>
-      
-        <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
-         <script>
+					<input type="number" name="pincode" id="name" class="number_in"
+						placeholder="Pincode" pattern="[0-9]+" required>
+				</div>
+
+				<div class="photo" style="margin-top: 15px;">
+					<label>Click Here Choose Your ID CARD Image</label> <input
+						type="file" name="proof_image" class="Weaving"
+						id="card_img_upload"> <img src="" id="imgBox2"
+						style="display: none;" alt=""> <img class="check_img"
+						src="../../assets/img/icon/grey_style.gif" style="display: none;"
+						width="30px" height="30px" id="card_load" alt=""> <img
+						class="check_img2" src="../../assets/img/icon/check-mark.png"
+						style="display: none;" width="20px" height="20px" id="card_check"
+						alt="">
+
+
+				</div>
+
+				<div class="photo" style="margin-top: 15px;">
+					<label>Click Here Choose Your Weaving Image</label> <input
+						type="file" name="id_image" class="Weaving" id="photo_img_upload">
+
+
+					<img class="check_img" src="../../assets/img/icon/grey_style.gif"
+						style="display: none;" width="30px" height="30px" id="photo_load"
+						alt=""> <img class="check_img2"
+						src="../../assets/img/icon/check-mark.png" style="display: none;"
+						width="20px" height="20px" id="photo_check" alt="">
+
+				</div>
+
+				<div class="pass" style="margin-top: 15px;">
+
+					<input type="password" name="password" id="password"
+						placeholder="Password" value="Meenu@2343"
+						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+				</div>
+
+				<div class="pass" style="margin-top: 15px;">
+
+					<input type="password" name="confirm_password"
+						id="confirm_password" class="passs" value="Meenu@2343"
+						placeholder="Confirm Password" required>
+				</div>
+				<p style="font-size: 13px;">
+					Pattern : Minimum 8 characters include Uppercase,<br>
+					Lowercase, Number and Special characters.
+				</p>
+				<button class="submit" type="submit">
+					<b>Submit</b>
+				</button>
+				<div class="log">
+					<p>
+						you already have a account<a
+							href="<%=request.getContextPath()%>/pages/seller/seller_login.jsp" style="color: rgb(71, 159, 118);">Login</a>
+					</p>
+				</div>
+				<!-- <a onclick="loginpage()" style="color:black;"><button class="login"><b>login</b></button></a> -->
+
+			</form>
+
+		</section>
+
+		<section class="img">
+			<img
+				src="<%=request.getContextPath()%>/assets/img/Untitled-removebg-preview.png"
+				alt="img">
+		</section>
+
+	</section>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+	<script>
 
               //  API for store image in cloud
 // post image Upload API
@@ -245,6 +301,6 @@ function loginpage() {
 
 
 
-        
-    </body>
+
+</body>
 </html>

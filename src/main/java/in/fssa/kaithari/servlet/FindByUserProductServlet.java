@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import in.fssa.kaithari.exception.ServiceException;
 import in.fssa.kaithari.exception.ValidationException;
 import in.fssa.kaithari.model.Product;
+import in.fssa.kaithari.model.User;
 import in.fssa.kaithari.service.ProductService;
+import in.fssa.kaithari.service.UserService;
 
 /**
  * Servlet implementation class FindByUserProductServlet
@@ -35,8 +37,11 @@ public class FindByUserProductServlet extends HttpServlet {
 	        try {
 	        	ProductService productservice = new ProductService();
 	            Product product = productservice.findProductById(productId);
+	            UserService userService = new UserService();
+	            User user = userService.findById(product.getSellerId());
 	            if (product != null) {
 	                request.setAttribute("productDetails", product);
+	                request.setAttribute("sellerName", user.getName());
 	                RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/products/product_details.jsp");
 	                dispatcher.forward(request, response);
 	            } else {

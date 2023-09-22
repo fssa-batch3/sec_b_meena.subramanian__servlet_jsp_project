@@ -129,7 +129,7 @@ input[type="search"]{
   
   .flex_right {
     width: 50%;
-    margin-top: 37px;
+    margin-top: 101px;
   }
   
   .flexHeader {
@@ -232,8 +232,8 @@ input[type="search"]{
   
   .orderText{
     display: block;
-    margin-left: 25px;
-    margin-bottom: 8px;
+    margin-left: -66px;
+    margin-bottom: -4px;
     width: 100%;
     /* flex-grow: 1; */
   }
@@ -248,16 +248,17 @@ input[type="search"]{
     font-size: 0.8rem;
   }
 
-  #lastchild1{
+/*   #lastchild1{
     font-weight: 500;
-    /* font-size: 1.3rem; */
+    font-size: 1.3rem;
     width: 100%;
-  }
+  } */
   
   #lastchild{
     font-weight: 500;
-    /* font-size: 1.3rem; */
-    width: 100%;
+    font-size: 1.3rem;
+    color:red;
+    
   }
   
   .cancellation {
@@ -272,7 +273,7 @@ input[type="search"]{
   
   .shipping-desc {
     font-size:15px;
-    margin:2rem 0rem;
+    color:black;
   }
   .order-desc {
     display:flex;
@@ -283,10 +284,10 @@ input[type="search"]{
   p{
     margin:0.3rem;
     color:#7f8083;
+    font-size : 13px;
   }
   .shipping-address {
-    margin-top: 10px;
-    background-color:rgb(230, 232, 232);
+    margin-top: 24px;
     color:rgb(0, 0, 0);
     border-radius: 20px;
     padding: 20px 20px;
@@ -296,15 +297,17 @@ input[type="search"]{
     font-size:17px;
   }
   .img-photo{
-    width:40px;
-    height:40px;
-    border-radius: 5px;
+        width: 61px;
+    height: 40px;
+    border-radius: 7px;
+    padding-right: 16px;
+    margin-bottom: 57px;
   
   }
 
   #buyer_name{
     color: rgb(249, 145, 145);
-    font-size: 20px;
+    font-size: 15px;
   }
 
   

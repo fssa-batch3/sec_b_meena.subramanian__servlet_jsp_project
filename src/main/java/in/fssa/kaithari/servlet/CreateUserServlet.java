@@ -62,7 +62,7 @@ public class CreateUserServlet extends HttpServlet {
 			 
 		} catch (ServiceException | ValidationException e) {
 			e.printStackTrace();
-			out.println(e.getMessage());
+			System.out.println(e.getMessage());
 		} 
 	}
 }

@@ -17,7 +17,7 @@
 	href="<%=request.getContextPath() %>/assets/css/Seller product list.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta charset="utf-8">
-<style>
+<!-- <style>
 body {
 	font-family: Arial, sans-serif;
 	background-color: #f4f4f4;
@@ -91,7 +91,7 @@ td button:hover {
 	color: white;
 	text-decoration: none;
 }
-</style>
+</style> -->
 
 </head>
 <body>
@@ -103,18 +103,18 @@ td button:hover {
 			</a>
 		</div>
 
-		<div class="back">
+		<%-- <div class="back">
 			<a href="<%=request.getContextPath() %>/seller/seller login.jsp">
 				<button>Back</button>
 			</a>
-		</div>
+		</div> --%>
 
 		<h2>PRODUCTS</h2>
 
 		<div class="navigations">
 
 			<div class="search">
-				<input type="search" placeholder="search">
+				<input type="hidden" placeholder="search">
 			</div>
 
 			<div class="new">
@@ -130,9 +130,8 @@ td button:hover {
 				</a>
 			</div>
 
-			<di v class="order"> <a
-				href="<%=request.getContextPath() %>/seller products/seller_shipping_page.jsp">
-				<img class="order_img"
+			<di v class="order"> 
+				<a href="/kaithariweb/seller/order_shipping"><img class="order_img"
 				src="<%=request.getContextPath() %>/assets/img/Seller order bag.png">
 			</a>
 		</div>
@@ -147,7 +146,6 @@ td button:hover {
 	%>
 	<%
 	//Set<Product> listProducts = productList.listAllProduct();
-	
 	int sellerId=(Integer) request.getSession().getAttribute("sellerId");
 	//int sellerId = 4;
 	Set<Product> productlist=new ProductService().findProductBySellerId(sellerId);
@@ -225,14 +223,18 @@ for (let i = 0; i < product_upload.length; i++) {
        // <p class=rate> </p>
        const p_rate = document.createElement("p");
        p_rate.setAttribute("class", "rate");
-       let dis=(product_upload[i].price/100)*product_upload[i].offer;
-       p_rate.textContent = product_upload[i].price-dis;
-     console.log(dis);
+       const productObj = product_upload[i];
+       console.log(productObj);
+       console.log(productObj.price +"-" + productObj.offers);
+       p_rate.innerText = "Rs : " + (productObj.price-((productObj.price/100)*productObj.offers));
+       div_product_content.append(p_rate);
+       
+/*      console.log(dis); */
        div_product_content.append(p_rate);
        //  <s class=s1> </s>
        const s_s1 = document.createElement("s");
        s_s1.setAttribute("class", "s1");
-       s_s1.innerText = product_upload[i].price;
+       s_s1.innerText ="Rs : " + product_upload[i].price;
        div_product_content.append(s_s1);
        //  <div class=star> </div>
        const div_star = document.createElement("div");

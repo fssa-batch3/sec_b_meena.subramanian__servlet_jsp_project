@@ -27,17 +27,17 @@
                         height="80px"></a>
             </div>
 
-            <div class="back">
+           <%--  <div class="back">
                 <a href="<%=request.getContextPath()%>/seller products/seller product list.jsp">
                     <button>Back</button>
                 </a>
-            </div>
+            </div> --%>
 
             <h6 class="but">MY PRODUCTS</h6>
 
             <div class="navigations">
                 <div class="search">
-                    <input type="search" placeholder="search">
+                    <input type="hidden" placeholder="search">
                 </div>
 
                 <div class="new">
@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="accound">
-                    <a href="<%=request.getContextPath()%>/seller/Seller profile.jsp">
+                    <a href="<%=request.getContextPath()%>/seller/profile">
                         <i class="fa fa-user-circle-o"
                             style="font-size:24px;color: black;"></i></a>
                 </div>

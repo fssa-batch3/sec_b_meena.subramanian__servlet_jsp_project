@@ -7,8 +7,35 @@
  <title>Buyer Register </title>
 
         <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/register.css">
+        <link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.css">
+<script
+	src="https://cdn.jsdelivr.net/gh/suryaumapathy2812/notify__js/notify.js">
+</script>
 </head>
 <body>
+<%-- <%
+	String error = (String) request.getAttribute("errorMessage");
+	if (error != null && !("".equals(error))) {
+	%>
+	<script>
+		Notify.error(
+		`<%=error%>
+		`);
+	</script>
+	<%
+	} else {
+	%>
+	<script>
+        Notify.error("please fill the details");
+    </script>
+	<%
+	}
+	%> --%>
+
+
+
+
 
  <section class="new">
             <section class="total">
@@ -17,12 +44,12 @@
                 <form action="create" method="post">
                     <div class="name" style="margin-top: 30px;">
 
-                        <input type="text" name="name" id="name" placeholder="Name" value="Meena" pattern="[a-zA-Z0-9]+" required>
+                        <input type="text" name="name" id="name" placeholder="Name" pattern="[a-zA-Z0-9]+( [a-zA-Z0-9]+)*" required>
                     </div>
                      <div class="mail" style="margin-top: 15px;">
 
                         <input type="email" name = "email" placeholder="Email" id="email"
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value="vasumeena2004@gmail.com" required>
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  required>
                     </div>
                      <div class="mobile_number" style="margin-top: 30px;">
 
@@ -50,13 +77,13 @@
 
                     <div class="pass" style="margin-top: 15px;">
 
-                        <input type="password" name = "password" id="password" placeholder="Password" value="Meena@2343" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        <input type="password" name = "password" id="password" placeholder="Password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                             required>
                     </div>
 
                     <div class="pass" style="margin-top: 15px;">
 
-                        <input type="password" name = "confirm_password" id="confirm_password" class="passs" value="Meena@2343" placeholder="Confirm Password" required>
+                        <input type="password" name = "confirm_password" id="confirm_password" class="passs"  placeholder="Confirm Password" required>
                     </div>
                     <p style="font-size: 13px;"> Pattern : Minimum 8 characters include Uppercase,<br>  Lowercase, Number and Special characters. </p>
                     <button class="submit" type="submit">

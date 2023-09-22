@@ -15,14 +15,18 @@ import in.fssa.kaithari.exception.ValidationException;
 import in.fssa.kaithari.model.Seller;
 import in.fssa.kaithari.service.SellerService;
 
-@WebServlet("/seller/login")
+@WebServlet("/pages/seller/login")
 public class SellerLoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher(request.getContextPath()+"/pages/seller/seller login.jsp");
-        rd.forward(request, response);
-    }
+	
+	 protected void doGet(HttpServletRequest request, HttpServletResponse
+	 response) throws ServletException, IOException { 
+		 
+		 RequestDispatcher rd = request.getRequestDispatcher("/pages/seller/seller_login.jsp"); 
+		 rd.forward(request, response);
+		 }
+	 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -32,6 +36,7 @@ public class SellerLoginServlet extends HttpServlet {
             SellerService sellerService = new SellerService();
             Seller seller = new Seller();
 			try {
+				System.out.println(email);
 				seller = sellerService.findByEmail(email);
 			} catch (PersistenceException e) {
 				e.printStackTrace();
@@ -44,7 +49,7 @@ public class SellerLoginServlet extends HttpServlet {
                 System.out.println("Login Successful");
                 int id = seller.getId();
                 request.getSession().setAttribute("sellerId", id);
-                response.sendRedirect(request.getContextPath() + "/list_all_products.jsp");
+                response.sendRedirect(request.getContextPath()+"/list_all_products.jsp");
             }
 
         } catch (ServiceException e) {

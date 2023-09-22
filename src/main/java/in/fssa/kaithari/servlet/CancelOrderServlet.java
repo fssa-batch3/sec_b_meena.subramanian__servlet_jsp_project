@@ -13,24 +13,15 @@ import javax.servlet.http.HttpSession;
 import in.fssa.kaithari.exception.ServiceException;
 import in.fssa.kaithari.exception.ValidationException;
 import in.fssa.kaithari.model.User;
+import in.fssa.kaithari.service.OrderService;
 import in.fssa.kaithari.service.UserService;
 
 /**
- * Servlet implementation class UserProfileServlet
+ * Servlet implementation class CancelOrderServlet
  */
-
-@WebServlet("/user/profile")
-
-public class UserProfileServlet extends HttpServlet {
+@WebServlet("/user/cancel_order")
+public class CancelOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public UserProfileServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -38,26 +29,24 @@ public class UserProfileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		HttpSession session = request.getSession();
+
+		Integer userIdObject = (Integer) session.getAttribute("userId");
 		try {
 
-			HttpSession session = request.getSession();
-
-			Integer userId = (Integer) session.getAttribute("userId");
-
+			int userId = userIdObject.intValue();
 			UserService userService = new UserService();
-
 			User user = userService.findById(userId);
 
-//			AddressEntity address = AddressService.findByDefault(userId);
+			System.out.println(userId);
 
-// UserEntity user = UserService.findById(Integer.parseInt(userId));
+			int orderId = (Integer) Integer.parseInt(request.getParameter("order_id"));
 
-			request.setAttribute("userDetails", user);
-//			request.setAttribute("address", address);
+			OrderService order = new OrderService();
+			order.cancelOrder(orderId);
 
-//			System.out.println(address);
-
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/profile page/profile page.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/user/my_orders");
 			dispatcher.forward(request, response);
 
 		} catch (ServiceException e) {
@@ -66,7 +55,7 @@ public class UserProfileServlet extends HttpServlet {
 			e.printStackTrace();
 		} catch (ValidationException e) {
 			e.printStackTrace();
-
 		}
+
 	}
 }

@@ -49,7 +49,7 @@
 	</div>
 	<div class="navigations">
 		<div class="search">
-			<input type="search" placeholder="search">
+			<input type="hidden" placeholder="search">
 		</div>
 		<a href="<%=request.getContextPath()%>/user/login"><button>Log
 				in</button></a> <a href="<%=request.getContextPath()%>/user/new"><button>Sign
@@ -67,7 +67,7 @@
 
 		<div class="nav">
 			<ul>
-				<li><a href="<%=request.getContextPath()%>/products/saree"">Sarees</a></li>
+				<li><a href="<%=request.getContextPath()%>/products/saree">Sarees</a></li>
 				<li><a href="<%=request.getContextPath()%>/products/dhoti">Dhotis</a></li>
 				<li><a
 					href="<%=request.getContextPath()%>/pages/about us/about us.jsp">About
@@ -79,11 +79,9 @@
 		</div>
 		<div class="navigations">
 			<div class="search">
-				<input type="search" placeholder="search">
-			</div>
+				<input type="hidden" placeholder="search">
+			</div> 
 
-
-			
 			<div class="accound">
 				<a href="<%=request.getContextPath()%>/user/profile"><i
 					class="fa fa-user-circle-o" style="font-size: 24px; color: black;"></i>

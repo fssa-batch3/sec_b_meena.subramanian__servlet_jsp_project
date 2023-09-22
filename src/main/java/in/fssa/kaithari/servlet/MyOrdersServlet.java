@@ -33,6 +33,7 @@ public class MyOrdersServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         Integer userIdObject = (Integer) session.getAttribute("userId");
+  
 
         if (userIdObject != null) {
             int userId = userIdObject.intValue();

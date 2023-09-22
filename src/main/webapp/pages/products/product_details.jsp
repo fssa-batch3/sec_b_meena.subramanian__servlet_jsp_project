@@ -20,7 +20,9 @@
 </head>
 
 <body>
-	<% Product product=(Product) request.getAttribute("productDetails"); %>
+	<% Product product=(Product) request.getAttribute("productDetails"); 
+	String user = (String) request.getAttribute("sellerName");
+	%>
 
 	<header>
 		<jsp:include page="/header.jsp" />
@@ -51,7 +53,9 @@
 				<div>
 					<p id="length">Product-length : <%=product.getLength()==5?"5.5":"8.2" %></p>
 				</div>
-
+				 <div>
+					<p id="Seller">Seller : <%= user %></p>
+				</div>
 				<div class="akka">
 					<p>Special Price</p>
 					<b id="price"><%="Rs : " + (product.getPrice()-((product.getPrice()/100)*product.getOffers())) %></b> <span id="percentage"> <%=product.getOffers()+"%" %> </span>
@@ -62,7 +66,7 @@
 				<s id="actualprice"><%="Rs : " +product.getPrice() %></s>
 			</div>
 
-			<div class="review">
+			<!-- <div class="review">
 				REVIEW : <i id="star-1" class="fa fa-star-o"
 					style="font-size: 24px; color: orange;"></i> <i id="star-2"
 					class="fa fa-star-o" style="font-size: 24px; color: orange;"></i> <i
@@ -74,7 +78,7 @@
 
 				<p id="review_count"></p>
 			</div>
-
+ -->
 			<div class="content-details">
 				<h3>Design-Type :</h3>
 				<p id="Design"><%=product.getDesignName() %> </p>
@@ -121,16 +125,16 @@
 					height="150">
 				<div class="product-content">
 					<h3 class="product-name">Kanchi Pattu(Blue,Green,Black)</h3>
-					<p class="rate">₹ 5999</p>
-					<s class="s1">₹ 6,500</s>
-					<div class="star">
+					<p class="rate">Rs : 5999</p>
+					<s class="s1">Rs : 6,500</s>
+				<!-- 	<div class="star">
 						<i class="fa fa-star" style="font-size: 24px"></i> <i
 							class="fa fa-star" style="font-size: 24px"></i> <i
 							class="fa fa-star" style="font-size: 24px"></i> <i
 							class="fa fa-star" style="font-size: 24px"></i> <i
 							class="fa fa-star" style="font-size: 24px"></i>
 
-					</div>
+					</div> -->
 
 					<button class="buy">
 						<a href="<%=request.getContextPath()%>/Saree details/product 2.jsp"> <strong>BUY
@@ -146,16 +150,16 @@
 					height="150">
 				<div class="product-content">
 					<h3 class="product-name">Binthu Pattu(Blue,Green,Black)</h3>
-					<p class="rate">₹ 2999</p>
-					<s class="s1">₹ 6,500</s>
-					<div class="star">
+					<p class="rate">Rs : 2999</p>
+					<s class="s1">Rs : 6,500</s>
+					<!-- <div class="star">
 						<i class="fa fa-star" style="font-size: 24px"></i> <i
 							class="fa fa-star" style="font-size: 24px"></i> <i
 							class="fa fa-star" style="font-size: 24px"></i> <i
 							class="fa fa-star" style="font-size: 24px"></i> <i
 							class="fa fa-star" style="font-size: 24px"></i>
 
-					</div>
+					</div> -->
 
 					<button class="buy">
 						<a href="<%=request.getContextPath()%>/Saree details/product 2.jsp"> <strong>BUY
@@ -171,16 +175,16 @@
 					height="150">
 				<div class="product-content">
 					<h3 class="product-name">Binthu Pattu(Blue,Green,Black)</h3>
-					<p class="rate">₹ 2999</p>
-					<s class="s1">₹ 6,500</s>
-					<div class="star">
+					<p class="rate">Rs : 2999</p>
+					<s class="s1">Rs : 6,500</s>
+					<!-- <div class="star">
 						<i class="fa fa-star" style="font-size: 24px"></i> <i
 							class="fa fa-star" style="font-size: 24px"></i> <i
 							class="fa fa-star" style="font-size: 24px"></i> <i
 							class="fa fa-star" style="font-size: 24px"></i> <i
 							class="fa fa-star" style="font-size: 24px"></i>
 
-					</div>
+					</div> -->
 
 					<button class="buy">
 						<a href="<%=request.getContextPath()%>/Saree details/product 2.jsp"> <strong>BUY
@@ -342,7 +346,7 @@
             "  If handwashing is required, use a gentle silk-specific detergent.." + "     " + " Gently soak the saree in cold water for a short time." +
             " Avoid rubbing or scrubbing the fabric.." + "                               " + "  Rinse with cold water and carefully squeeze out excess water." +
             "  Hang the saree to dry in a shaded area, away from direct sunlight.." + "    " + " Iron the saree at a low heat setting or use a steamer."
-        const Cotton_Vesti =
+        const Dhoti =
 
             "  wash or hand wash in cold or lukewarm water." + "          " + " Use a mild detergent suitable for cotton fabrics." +
             "  Avoid using bleach or harsh chemicals." + "                " + " Gently wash and rinse the vesti." +

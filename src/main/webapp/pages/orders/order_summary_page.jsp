@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="in.fssa.kaithari.model.Order"%>
+<%@page import="in.fssa.kaithari.model.User"%>
+<%@page import="in.fssa.kaithari.model.Product"%>
 <html lang="en">
 
 <head>
@@ -7,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orders Summary</title>
 
-    <link rel="stylesheet" href="../../assets/css/order_summary_page.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/order_summary_page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,10 +25,13 @@
 <body>
 
     
-     <header>
+<header>
 <jsp:include page="/header.jsp" />
 </header>
 
+<% Product product=(Product) request.getAttribute("productDetails"); %>
+<% User user=(User) request.getAttribute("userDetails"); %>
+<%Order order = (Order)request.getAttribute("order");%>
 
     <div class="container">
         <div class="iphone">
@@ -35,11 +41,11 @@
                         <div class="order-summary">
                             <div class="order-status">Arriving date</div>
                             <div id="orderDate">
-                                19 April, 2023
+                                On the Way
                             </div>
-                            <div id="orderDay">
+                            <!-- <div id="orderDay">
                                 Friday
-                            </div>
+                            </div> -->
                         </div>
                         <!-- <div class="action-btn">
                         <div class="back-btn"><i class="far fa-long-arrow-left"></i></div>
@@ -49,7 +55,7 @@
                         <div class="triangle1"></div>
                         <div class="arc"></div>
                         <div class="pattern"></div>
-                        <img id="productImage" class="hero-img">
+                        <img id="productImage" src="<%=product.getImage() %>" class="hero-img">
                     </div>
                 </div>
                 <div class="flex_right">
@@ -64,45 +70,44 @@
                             <div class="product-container">
                                 <div class="product">
                                     <div class="product-photo">
-                                        <img id="reference_image" src="../../assets/img/5.jpeg" class="img-photo">
+                                        <img id="reference_image" src ="<%=product.getImage()%>" class="img-photo">
                                     </div>
                                     <div class="product-desc">
-                                        <span class="orderText" id="lastchild">
+                                        <span class="orderText" id="lastchild" ><%=product.getName()%>
                                         </span>
-                                        <span class="orderText" id="firstchild"></span>
+                                         
+							
+                           <div class="shipping-address">
+                           <p class="shipping-desc">Delivery Address</p>
+                                <p id="buyer_name"><%=user.getName()%></p>
+                                <p id="buyer_address"><%=user.getAddress()%></p>
+                                <p id="buyer_town"><%=user.getVillage()%>,<%=user.getPincode()%></p>
+                                <p id="buyer_mobile"><%=user.getMobileNumber() %></p>
+                                <p id="buyer_city"><%=user.getDistrict()%></p>
+                            </div>
                                     </div>
-                                    <div class="product-desk">
-                                        <span class="orderText" id="lastchild1"></span>
-                                        <span class="orderText" id="firstchild2"></span>
-
-                                    </div>
+                                 
                                 </div>
 
-                            </div>
-                            <hr>
-
-                            <div class="shipping-desc">Delivery Address</div>
-
-                            <div class="shipping-address">
-                                <p id="buyer_name"></p>
-                                <p id="buyer_address"></p>
-                                <p id="buyer_town"></p>
-                                <p id="buyer_city"></p>
                             </div>
                             <hr>
 
                             <div class="shipping-desc">Order Summary</div>
                             <div class="order-desc">
                                 <div>
-                                    <p class="price">Total Price :</p>
+                                  
+                                        
+                                   <p class="price" id="firstchild2">Item:<%=product.getQuantity()%></p>
+                                    <p class="price">Total Price : <%=order.getPrice()*product.getQuantity()%></p>
+                  
                                 </div>
                                 <div>
                                     <p id="total_price" class="price"></p>
                                 </div>
-                                <!-- <button class="review_button" id="myButton">Review The Product</button> -->
+                             <!--    <button class="review_button" id="myButton"></button>  --> 
                             </div>
                         </div>
-                        <div id="myPopup" class="popup">
+<!--                         <div id="myPopup" class="popup">
                             <div class="popup-content">
 
                                 <div class="containerDiv">
@@ -128,17 +133,17 @@
                                             <div class="btn" id="btn">
                                                 <button class="btnPost" type="button" id="post_btn">Post </button>
                                             </div>
-                                            <!-- <button id="closePopup">
+                                            <button id="closePopup">
                                                 Cancel
-                                            </button> -->
+                                            </button>
                                         </form>
                                     </div>
                                 </div>
 
 
                             </div>
-                        </div>
-                        <button class="review_button" id="myButton">Review The Product</button>
+                        </div> -->
+                       <!--  <button class="review_button" id="myButton">Review The Product</button> -->
                     </div>
                 </div>
             </div>
@@ -146,111 +151,7 @@
 
     </div>
     </div>
-    <script>
-
-        myButton.addEventListener("click", function () {
-            myPopup.classList.add("show");
-        });
-        // closePopup.addEventListener("click", function () {
-        // 	myPopup.classList.remove("show");
-        // });
-        window.addEventListener("click", function (event) {
-            if (event.target == myPopup) {
-                myPopup.classList.remove("show");
-            }
-        });
-
-
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        const order_id = urlParams.get("order_id");
-
-
-        const order_list = JSON.parse(localStorage.getItem("order_list")) || [];
-        const uniqueID_user = JSON.parse(localStorage.getItem("uniqueID_user"));
-        const order_user = order_list.filter((e) => e.uniqueID_user === uniqueID_user);
-        console.log(order_user);
-
-        const unique_id = order_user.find((e) => e.order_uuid === order_id);
-        console.log(unique_id);
-
-
-        const product_crud = JSON.parse(localStorage.getItem("product_crud"));
-        const product = product_crud.filter((e) => e.product_uuid === unique_id.product_id);
-        console.log(product);
-
-        const add_address = JSON.parse(localStorage.getItem("add_address"));
-        const address = add_address.filter((e) => e.address_uuid === unique_id.user_adress);
-        console.log(address);
-
-        const dateStr = unique_id.order_date; // Wrap the dateStr in quotes to make it a string
-        console.log(dateStr)
-        const date = new Date(dateStr);
-        date.setDate(date.getDate() + 7); // Add 7 days to the current date
-        // Array of month names
-        const months = [
-            "January", "February", "March", "April", "May", "June", "July",
-            "August", "September", "October", "November", "December"
-        ];
-        // Array of weekday names
-        const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        // Get the day, month, and year
-        const day = date.getDate();
-        const month = months[date.getMonth()];
-        const year = date.getFullYear();
-        // Get the weekday
-        const weekday = weekdays[date.getDay()];
-        // Format the date string
-        const formattedDate = `${day} ${month}, ${year}`;
-        const formattedWeekday = weekday;
-        document.getElementById("orderDate").innerText = formattedDate;
-        document.getElementById("orderDay").innerText = formattedWeekday;
-
-        document.getElementById("productImage").src = product[0].uppic;
-        document.getElementById("reference_image").src = product[0].uppic;
-        const productname = document.getElementById("lastchild").innerText = product[0].productname;
-        const catagory = document.getElementById("firstchild").innerText = product[0].productreview;
-        const price = document.getElementById("lastchild1").innerText = "₹" + product[0].discountprice;
-        const Quantity = document.getElementById("firstchild2").innerText = "Qty :" + unique_id.quantity;
-        const buyer_name = document.getElementById("buyer_name").innerText = address[0].name;
-        const buyer_address = document.getElementById("buyer_address").innerText = address[0].street;
-        const buyer_town = document.getElementById("buyer_town").innerText = address[0].town;
-        const buyer_city = document.getElementById("buyer_city").innerText = address[0].country + "  - " + add_address[0].zip;
-        const total_price = document.getElementById("total_price").innerText = "₹" + product[0].discountprice * unique_id.quantity;
-
-
-        const post_btn = document.getElementById("post_btn");
-        post_btn.addEventListener("click", function () {
-            const review_data=JSON.parse(localStorage.getItem("review_data"))||[];
-
-            const content=document.getElementById("text_area").value;
-
-            let selectedRating = document.querySelector('input[name="rate"]:checked');
-
-                let ratingValue = selectedRating.id.split("-")[1];  
-              
-                    review_data.push({
-                        "product_uuid":unique_id.product_id,
-                        "user_id":uniqueID_user,
-                        "rating":parseInt(ratingValue),
-                        "content":content,
-                    });
-
-                    document.getElementById("text_area").value="";
-
-                    localStorage.setItem(("review_data"),JSON.stringify(review_data));
-
-                    myPopup.classList.remove("show");
-
-                   
-               
-        
-        })
-
-
-
-
-    </script>
+    
 </body>
 
 </html>

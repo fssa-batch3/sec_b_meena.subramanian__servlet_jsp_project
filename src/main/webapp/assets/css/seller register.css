@@ -19,6 +19,16 @@
 
     
 }
+.number_in{
+	border-radius: 5px;
+	border-color: transparent;
+	background-color:#eaecef;
+    outline: none;
+    padding:13px;
+    width:420px;
+    margin-bottom:20px;
+	font-size: 16px;
+}
 
 h1{
 	font-size: 40px;

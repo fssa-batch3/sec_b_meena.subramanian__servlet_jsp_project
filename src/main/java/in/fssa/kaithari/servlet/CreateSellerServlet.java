@@ -17,7 +17,7 @@ import in.fssa.kaithari.service.SellerService;
 /**
  * Servlet implementation class CreateSellerServlet
  */
-@WebServlet("/pages/seller/create")
+@WebServlet("/seller/create")
 public class CreateSellerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,7 +34,7 @@ public class CreateSellerServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        SellerService sellerService = new SellerService();
+    	SellerService sellerService = new SellerService();
         Seller seller = new Seller();
 
         PrintWriter out = response.getWriter();
@@ -44,15 +44,28 @@ public class CreateSellerServlet extends HttpServlet {
         String proofImage = request.getParameter("proof_image");
         String idImage = request.getParameter("id_image");
         String password = request.getParameter("password");
+        String district = request.getParameter("district"); // New field
+        int pincode = Integer.parseInt(request.getParameter("pincode")); // New field
+        String village = request.getParameter("village"); // New field
+        long mobileNumber = Long.parseLong(request.getParameter("mobile_number")); // New field
+        String address = request.getParameter("address"); // New field
+
         seller.setName(name);
         seller.setEmail(email);
         seller.setProofImage(proofImage);
         seller.setIdImage(idImage);
         seller.setPassword(password);
+        seller.setDistrict(district); 
+        seller.setPincode(pincode); 
+        seller.setVillage(village);
+        seller.setMobileNumber(mobileNumber); 
+        seller.setAddress(address); 
+
+
 
         try {
             sellerService.create(seller);
-            response.sendRedirect(request.getContextPath() + "/seller/seller login.jsp");
+            response.sendRedirect(request.getContextPath() + "/pages/seller/seller_login.jsp");
 
         } catch (ServiceException | ValidationException e) {
             e.printStackTrace();

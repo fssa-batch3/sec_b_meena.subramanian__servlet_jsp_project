@@ -41,11 +41,12 @@ public class SellerProfileServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 
 			Integer sellerId = (Integer) session.getAttribute("sellerId");
+			
 
 			SellerService sellerService = new SellerService();
 
 			Seller seller = sellerService.findById(sellerId);
-
+			System.out.println(seller);
 //			AddressEntity address = AddressService.findByDefault(userId);
 
 			// UserEntity user = UserService.findById(Integer.parseInt(userId));

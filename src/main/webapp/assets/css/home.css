@@ -229,11 +229,11 @@ i:hover{
     height: 45vh;
 	margin-top: 100px;    
 }
-
+ 
 .products-container{
-	height:130vh;
+	max-height: 60vh
 
-}
+} 
 
 .products-container h3{
      color:black
@@ -253,7 +253,6 @@ i:hover{
 	width:500px;
 	background-color: cadetblue;
 	float:right;
-	margin-bottom:40px;
 	position: relative;
 	bottom: 20px;
 }

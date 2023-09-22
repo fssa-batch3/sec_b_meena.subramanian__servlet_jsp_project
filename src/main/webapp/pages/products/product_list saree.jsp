@@ -135,9 +135,8 @@
         
         <%Set<Product> cotton=(Set<Product>) request.getAttribute("cottonSaree"); %>
         <%Set<Product> silk=(Set<Product>) request.getAttribute("silkSaree"); %>
-
+        
         <script>
-
 
     // const queryString = window.location.search;
     // const urlParams = new URLSearchParams(queryString);
@@ -186,7 +185,10 @@ for (let i = 0; i < add_products.length; i++) {
 
         const p_rate = document.createElement("p");
         p_rate.setAttribute("class", "rate");
-        p_rate.innerHTML = "Rs : " + add_products[i].Price;
+        const productObj = add_products[i];
+        console.log(productObj);
+        console.log(productObj.price +"-" + productObj.offers);
+        p_rate.innerText = "Rs : " + (productObj.price-((productObj.price/100)*productObj.offers));
         div_product_content.append(p_rate);
 
         //  <s class=s1> </s>

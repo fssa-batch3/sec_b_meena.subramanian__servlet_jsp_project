@@ -122,17 +122,11 @@ input[type="search"]{
 
 
 
-.wat{
-    width: 340px;
-    height: 420px;
+.wat {
+  width: 335px;
+    height: 388px;
     border: 1px solid white;
-    border-radius:6px;
-    background-color:whitesmoke;
-	margin-bottom: 30px;
-  
-}
-.wat:hover{
-	scale: 1.02;
+    border-radius: 6px;
 
 }
   
@@ -188,8 +182,8 @@ section{
     color: black;
     border-radius: 6px;
     border: 1px solid white;
-    margin-top: 10px;
-    margin-left: 20px;
+   margin-top: 40px;
+    margin-left: 98px;
 
 }
 .product-content{

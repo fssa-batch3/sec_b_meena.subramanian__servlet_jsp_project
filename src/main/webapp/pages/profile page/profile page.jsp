@@ -81,15 +81,15 @@
                 </div>
             </div>
             <div class="buttons">
-                <a href="/user/logout">
-                    <button onclick="logOut()" class="log">
+                <a href="/kaithariweb/user/logout">
+                    <button type="submit" class="log">
                         <strong>LOG OUT</strong>
                     </button>
                 </a>
 
                 <button id="add" class="address">
                     <strong>
-                       <a href="/kaithariweb/address/edit"> Address Edit</a></strong>
+                       <a href="/kaithariweb/address/edit">Edit Profile</a></strong>
                 </button>
 
             </div>
@@ -97,7 +97,7 @@
     </section>
 
 
-    <div class="modal d-none" id="myform">
+   <!--  <div class="modal d-none" id="myform">
         <form>
             <h1>Edit Your Profile</h1>
             <div class="popup">
@@ -106,10 +106,10 @@
                 <input type="submit" class="submit" />
             </div>
         </form>
-    </div>
+    </div> -->
 
 
-    <script>
+    <%-- <script>
         const uniqueID_user = JSON.parse(localStorage.getItem("uniqueID_user"));
         console.log(uniqueID_user);
 
@@ -207,7 +207,7 @@
             document.getElementById("myform").style.display = "none";
          }
     </script>
-
+ --%>
 </body>
 
 </html>

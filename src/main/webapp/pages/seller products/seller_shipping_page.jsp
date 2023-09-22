@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<%@page import="java.util.ArrayList"%>
+<%@page import="in.fssa.kaithari.service.ProductService"%>
+<%@page import="in.fssa.kaithari.model.Product"%>
+<%@page import="java.util.List"%>
+<%@page import="in.fssa.kaithari.model.Order"%>
+<%@page import="java.util.Set"%>
+<%@page import="in.fssa.kaithari.model.User"%>
 <html lang="en">
 
 <head>
@@ -7,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sarees</title>
 
-    <link rel="stylesheet" href="../../assets/css/seller_shipping_page.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/seller_shipping_page.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,11 +25,15 @@
 </head>
 
 <body>
+	<%
+	List<Order> order = (List<Order>) request.getAttribute("orderList");
+	List<Product> product = (List<Product>)request.getAttribute("productDeatils");
+	%>
 
     <header>
         <div class="logo">
-            <a href="../../index.jsp">
-                <img src="../../assets/img/image-removebg-preview.png" alt="logo" width="100px" height="80px">
+            <a href="<%=request.getContextPath() %>/index.jsp">
+                <img src="<%=request.getContextPath()%>/assets/img/image-removebg-preview.png" alt="logo" width="100px" height="80px">
             </a>
         </div>
 
@@ -31,37 +42,38 @@
         <div class="navigations">
 
             <div class="search">
-                <input type="search" placeholder="search">
+                <input type="hidden" placeholder="search">
             </div>
 
             <div class="accound">
-                <a href="../seller/Seller profile.jsp">
+                <a href="<%=request.getContextPath()%>/seller/profile">
                     <i class="fa fa-user-circle-o" style="font-size:24px;color: black;"></i>
                 </a>
             </div>
 
-            <div class="order">
+           <%--  <div class="order">
                 <a href="#">
-                    <img class="order_img" src="../../assets/img/Seller order bag.png">
+                    <img class="order_img" src="<%=request.getContextPath()%>/assets/img/Seller order bag.png">
                 </a>
-            </div>
+            </div> --%>
 
         </div>
     </header>
     <section class="order_card">
-
-        <!-- <div class="wat"> -->
-        <!-- <img src="../../assets/img/10.jpeg" alt="photo" width="150" height="150" />
+ <% for (int i=0; i<product.size(); i++) { %>
+        <div class="wat"> 
+         <img  alt="photo" src="<%=product.get(i).getImage()%>" width="150" height="150" />
             <div class="product-content">
-                <h3 class="product-name">Kanchi Pattu</h3>
-                <p class="s1">Qty: 2</p>
-                <p class="s1">Meenu</p>
-                <p class="s1">32/27,Bajanai Madam Sannathi Street</p>
-                <p class="s1">Veeravanalllur</p>
+                <h3 class="product-name"><%=product.get(i).getName() %></h3>
+                <p class="s1">Qty: <%=order.get(i).getBuyQuantity() %></p>
+                <p class="s1"><%=product.get(i).getName() %></p>
+                <p class="s1"><%=order.get(i).getAddress() %></p>
+                <p class="s1"><%=order.get(i).getVillage() %></p>
                 <button class="buy">
                     <strong>Shipped</strong>
                 </button>
-            </div> -->
+            </div> 
+    <% } %>
         <!-- </div> -->
 
         <!-- <div class="wat">
@@ -107,7 +119,7 @@
             <div class="about">
                 <h3>Menu</h3>
                 <h6>
-                    <a href="../../index.jsp">Home</a>
+                    <a href="<%=request.getContextPath() %>/index.jsp">Home</a>
                 </h6>
                 <h6>
                     <a href="../products/product_list saree.jsp">Sarees</a>
@@ -190,8 +202,10 @@
         </section>
     </section>
 
-
+<!-- 
     <script>
+    
+    
         const seller_id = JSON.parse(localStorage.getItem("uniqueID_seller"));
         const order_list = JSON.parse(localStorage.getItem("order_list"));
         const add_address = JSON.parse(localStorage.getItem("add_address"));
@@ -288,7 +302,7 @@
             // Append the main container div to the document body or another parent element
             document.querySelector(".order_card").prepend(containerDiv);
         }
-    </script>
+    </script> -->
 </body>
 
 </html>

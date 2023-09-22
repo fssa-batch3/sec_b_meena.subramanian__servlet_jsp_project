@@ -47,12 +47,13 @@ Product productService = (Product) request.getAttribute("productDetails");
         <input type="hidden" name="product_id" value="<%= productService.getId() %>">
         <input type="hidden" name="user_id" value="<%= user.getId() %>">
         <input type="hidden" name="seller_id" value="<%= productService.getSellerId() %>">
+        <input type="hidden" name="price" value="<%= (productService.getPrice()-((productService.getPrice()/100)*productService.getOffers())) %>">
             <div class="right">
                 <h2> Kaithari </h2>
                 <h3 id="product_name" name="product_name"><%= productService.getName() %></h3>
                 <h4> Special price </h4>
                 <p>
-                    <strong id="price" name="discountprice"><%="Rs : " + (productService.getPrice()-((productService.getPrice()/100)*productService.getOffers())) %></strong>
+                    <strong id="price" ><%="Rs : " + (productService.getPrice()-((productService.getPrice()/100)*productService.getOffers())) %></strong>
                     <s id="actualprice" name="actualprice">Rs : <%= productService.getPrice() %></s>
                     <b id="percentage" name="percentage"><%= productService.getOffers() %> %</b>
                 </p>
@@ -61,7 +62,7 @@ Product productService = (Product) request.getAttribute("productDetails");
                         <label> Quantity : </label>
                     </div>
                     <div class="form_input">
-                        <input type="number" name="quantity" id="quantity" min="1" value="1" required>
+                        <input type="number" name="quantity" id="quantity" min="1" max="10" value="1" required>
                     </div>
                 </div>
                 <p id="stock_alert" style="color:red;"></p>

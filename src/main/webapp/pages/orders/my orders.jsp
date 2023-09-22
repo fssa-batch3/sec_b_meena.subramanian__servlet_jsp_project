@@ -225,7 +225,14 @@
                 // Create the card div
                 const cardDiv = document.createElement("div");
                 cardDiv.classList.add("card");
-
+                
+                
+              
+               const anchor = document.createElement("a");
+                const order_id = anchor.getAttribute('data-id');
+                anchor.href = "/kaithariweb/user/order_summery?order_id="+ orderArray[i].id;
+                cardDiv.appendChild(anchor);
+             
                 // Create the image element
                 const image = document.createElement("img");
                 image.src = productData.image;
@@ -233,12 +240,14 @@
                 image.style.cursor = "pointer";
                 image.setAttribute('data-id', orderArray[i].id);
                 image.setAttribute('class', 'product_1');
-               
-                // Append the image to the card div
-                cardDiv.appendChild(image);
-
+                
+                
+                anchor.appendChild(image);
+                
+              
                 // Create the card content div
                 const cardContentDiv = document.createElement("div");
+                cardContentDiv.textContent = "Order Id : " + orderArray[i].id;
                 cardContentDiv.classList.add("card_content");
 
                 // Create the heading element
@@ -255,18 +264,33 @@
                 const quantity = document.createElement("p");
                 quantity.classList.add("quantity");
                 quantity.textContent = "quantity:" + orderArray[i].buyQuantity;
-
-
-                const cancelOrder = document.createElement("p");
+                
+                const cancelOrderLink = document.createElement("a");
+                cancelOrderLink.href = "/kaithariweb/user/cancel_order?order_id=" + orderArray[i].id;
+                cancelOrderLink.textContent = "Cancel Order";
+/* 
+                if (orderArray[i].cancel_order) {
+                    cancelOrderLink.style.display = "none";
+                } else {
+                    cancelOrderLink.style.display = "block";
+                }
+ */
+               /*  const cancelOrderLink = document.createElement("a");
+                cancelOrderLink.href = "/kaithariweb/user/cancel_order?order_id=" + orderArray[i].id;
+                cancelOrderLink.textContent = "Cancel Order"; */
+          /*       const cancelOrder = document.createElement("p");
                 cancelOrder.classList.add("cancel_order");
-                cancelOrder.textContent = "cancel order";
-                cancelOrder.setAttribute("id", orderArray[i].id)
+                cancelOrder.setAttribute("id", orderArray[i].id); */
+
+                // Append the link and the paragraph to the card content div
+               
 
                 // Append the heading and quantity to the card content div
 
                 cardContentDiv.appendChild(heading);
                 cardContentDiv.appendChild(quantity);
-                cardContentDiv.appendChild(cancelOrder);
+                cardContentDiv.appendChild(cancelOrderLink);
+                /* cardContentDiv.appendChild(cancelOrder); */
               
                 // Create the cost div
                 const costDiv = document.createElement("div");
@@ -282,7 +306,7 @@
                 const productPrice = document.createElement("p");
                 productPrice.classList.add("product_price");
                 productPrice.setAttribute('style', 'font-size:19px;')
-                productPrice.innerText = "Rs : " + productData.price * orderArray[i].buyQuantity;
+                productPrice.innerText = "Rs : " + orderArray[i].price *orderArray[i].buyQuantity;
 
 
                 // Create the free shipping paragraph
@@ -303,17 +327,32 @@
 
                 document.querySelector("div.cards").append(ordersContainer);
         }
-
-//URL Params
-const bookCovers = document.querySelectorAll(".product_1");
-        bookCovers.forEach((bookCover) => {
-            bookCover.addEventListener("click", (event) => {
-                const person_data = bookCover.dataset.id;
-                window.location.href = `./order_summary_page.jsp?order_id=${person_data}`;
+/* 
+	const cancelButtons = document.querySelectorAll(".cancel_order");
+	const orderCard = document.querySelectorAll(".product_1");
+        
+        cancelButtons.forEach(cancelButton => {
+            cancelButton.addEventListener("click", () => {
+            	window.location.href = `./cancel_order?id=${order_id}`;
+                cancelButton.textContent = "Order Canceled";
+                const order_id = orderCard.getAttribute('data-id');
+                cancelButton.disabled = true;
+                
+             // Store the canceled order status in localStorage
+                const orderId = cancelButton.closest(".card").querySelector(".product_1").getAttribute("data-id");
+                canceledOrders[orderId] = true;
+                localStorage.setItem("canceledOrders", JSON.stringify(canceledOrders));
             });
-        });
-
-
+                     
+        }); */
+        // Handle click events for order cards
+      /*  const orderCard = document.querySelectorAll(".product_1");
+        orderCard.forEach(orderCard => {
+            orderCard.addEventListener("click", (event) => {
+                const order_id = orderCard.getAttribute('data-id');
+                window.location.href = `./order_summery?order_id=${order_id}`; // Redirect to the servlet
+            });
+        }); */
     </script>
 
 </body>

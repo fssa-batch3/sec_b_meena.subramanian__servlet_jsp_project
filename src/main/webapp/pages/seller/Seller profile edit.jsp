@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Profile Edit Page</title>
 
-        <link rel="stylesheet" href="../../assets/css/seller profile edit.css">
+        <link rel="stylesheet" href="<%=request.getContextPath()%>/assets/css/addressedit.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,9 +19,7 @@
     </head>
 
     <body>
-<%
-		Seller seller = (Seller) request.getAttribute("editSeller");
-%>
+
         <header>
             <div class="logo">
                 <a href="<%=request.getContextPath() %>/index.jsp">
@@ -30,56 +28,36 @@
             </div>
         </header>
 
-        <div class="pro">
-            <h1 class="heading">EDIT PROFILE </h1>
+<%
+		Seller seller = (Seller) request.getAttribute("editSeller");
+%>
+ <div class="h1">
+        <h1 class="heading"> Edit Your Address </h1>
+    </div>
+    <form action="update_address" method="POST">
+        <!-- <div class="total"> -->
+        <div class="form-group">
+            <input type="text" class="form-control"  name = "name" id="inputName" value = "<%=seller.getName() %>" pattern="[a-zA-Z0-9]+" placeholder="Name" required>
+
+            <input type="text" class="form-control" name = "address"  id="inputStreet" value = "<%=seller.getAddress() %>" placeholder="Street" required>
+
+            <input type="text" class="form-control" name = "village"  id="inputCity"  value = "<%=seller.getVillage() %>"placeholder="Town" required>
+
+            <input type="number" class="form-control" name = "pincode"  id="inputZip"  value = "<%=seller.getPincode()%>"placeholder="Pincode" required>
+
+            <input type="text" class="form-control" name = "district"  id="inputCountry"  value = "<%=seller.getDistrict()%>"pattern="[a-zA-Z]+" placeholder="city"
+                required>
+
+            <input type="number" class="form-control" name = "mobile_number"  id="inputPhone" value = "<%=seller.getMobileNumber()%>" placeholder="Mobile Number" required>
+
+            <div class="butt">
+                <button type="submit" class="Save">Save Your Address</button>
+            </div>
+
         </div>
-        <section class="profile_details">
-            <form onsubmit="update_details(event)">
-                <div class="form">
-                    <div class="profile">
-                        <img class="profile_img" src="<%=request.getContextPath() %>/assets/img/profile.png" alt="photo" width="180px">
-                    </div>
-                    <div class="details">
-                        <div class="details_list">
-                            <p class="list">Name:</p>
-                            <input type="text" id="name" placeholder="S.Meena" class="list_2">
-                        </div>
-                        <div class="details_list">
-                            <p class="list">Email:</p>
-                            <input type="email" id="email" placeholder="vasumeenu2004@gmail.com"
-                                class="list_2">
-                        </div>
-                        <div class="details_list">
-                            <p class="list">Address:</p>
-                            <input type="text" id="address"
-                                placeholder="42/36,baguadwjeduuiNDEId street" class="list_2">
-                        </div>
-                        <div class="details_list">
-                            <p class="list">Contact:</p>
-                            <input type="text" id="phone" placeholder="74671*****"
-                                class="list_2">
-                        </div>
-                        <div class="details_list">
-                            <p class="list">District:</p>
-                            <input type="text" id="district" placeholder="Thirunelveli"
-                                class="list_2">
-                        </div>
-                        <div class="details_list">
-                            <p class="list">D.O.B:</p>
-                            <input type="date" id="dob" placeholder="17/08/2004" class="list_2">
-                        </p>
-                        </div>
-                    </div>
-                    <div class="buttons">
-                        <button type="submit" class="edit-btn">
-                            <strong>Save</strong>
-                        </button></a>
+</form>
 
-                    </div>
-                </div>
-            </form>
-        </section>
-
+<!-- 
         <script>
         const uniqueID_seller = JSON.parse(localStorage.getItem("uniqueID_seller"));
         const seller_cred = JSON.parse(localStorage.getItem("seller_cred"));
@@ -111,7 +89,7 @@
           window.location.href = "../seller/Seller profile.jsp";
         }
     </script>
-
+ -->
     </body>
 
 </html>

@@ -51,16 +51,25 @@ public class ProductBuyNowServlet extends HttpServlet {
 		ProductService productService = new ProductService();
 
 		try {
+			
+			if(userIdObject == null) {
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/user/login");
+				dispatcher.forward(request, response);
+				//login page
+			} else {
+				
+				 userId = userIdObject.intValue();
+				 UserService userService = new UserService();
+					User user = userService.findById(userId);
+					Product pdt = productService.findProductById(productId);
 
-			UserService userService = new UserService();
-			User user = userService.findById(userId);
-			Product pdt = productService.findProductById(productId);
+					request.setAttribute("userDetails", user);
 
-			request.setAttribute("userDetails", user);
-
-			request.setAttribute("productDetails", pdt);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/buy now page/buy now details.jsp");
-			dispatcher.forward(request, response);
+					request.setAttribute("productDetails", pdt);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/buy now page/buy now details.jsp");
+					dispatcher.forward(request, response);
+			}
 
 		} catch (ValidationException | ServiceException e) {
 			e.printStackTrace();
@@ -83,23 +92,27 @@ public class ProductBuyNowServlet extends HttpServlet {
 	        String district = request.getParameter("district");
 	        int buyQuantity = Integer.parseInt(request.getParameter("quantity"));
 	        int pincode = Integer.parseInt(request.getParameter("pincode"));
+	        int price = Integer.parseInt(request.getParameter("price"));
+	        System.out.println(price);
 	  
-
 	        // Create an Order object with the extracted values
+	        Timestamp createdAt = new Timestamp(new Date().getTime());
 	        Order order = new Order();
 	        order.setUserId(userId);
 	        order.setSellerId(sellerId);
 	        order.setProductId(productId);
 	        order.setOrderStatus(false);
+	        order.setCreatedAt(createdAt);
 	        order.setName(name);
 	        order.setAddress(address);
 	        order.setVillage(village);
 	        order.setDistrict(district);
 	        order.setBuyQuantity(buyQuantity);
 	        order.setPincode(pincode);
+	        order.setPrice(price);
 	        
-	        Timestamp createdAt = new Timestamp(new Date().getTime()); // Current timestamp
-	        order.setCreatedAt(createdAt);
+	         // Current timestamp
+	        
 
 	        // Call the service or DAO to save the order to the database
 	        OrderService orderService = new OrderService();

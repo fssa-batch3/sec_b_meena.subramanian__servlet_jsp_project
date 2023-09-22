@@ -17,30 +17,27 @@ import in.fssa.kaithari.model.Seller;
 import in.fssa.kaithari.service.SellerService;
 
 /**
- * Servlet implementation class EditSellerProfileServlet
+ * Servlet implementation class SellerAddressEditServlet
  */
-@WebServlet("/seller/profile_edit")
-public class EditSellerProfileServlet extends HttpServlet {
+@WebServlet("/seller_address/edit")
+public class SellerAddressEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 
 			HttpSession session = request.getSession();
 			
 			Integer sellerId = (Integer) session.getAttribute("sellerId");
-		    SellerService sellerService = new SellerService();
-			Seller seller = sellerService.findById(sellerId);
-	       
-			//AddressEntity address = AddressService.findByDefault(userId);
-						
-			//request.setAttribute("address", address);
-						
-			request.setAttribute("editSeller", seller);
 			
+			SellerService sellerService = new SellerService();
+			
+			Seller seller = sellerService.findById(sellerId);	
+			
+				
+		
+			request.setAttribute("editAddress", seller);
+					
 			request.setAttribute("sellerId", sellerId);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/seller/Seller profile edit.jsp");
@@ -53,10 +50,6 @@ public class EditSellerProfileServlet extends HttpServlet {
 			e.printStackTrace();
 		} catch (PersistenceException e) {
 			e.printStackTrace();
-		}
-		 
+		} 
 	}
 }
-
-
-

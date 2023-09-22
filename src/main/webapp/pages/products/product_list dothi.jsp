@@ -167,8 +167,13 @@ for (let i = 0; i < add_products.length; i++) {
     // <p class=rate> </p>
     const p_rate = document.createElement("p");
     p_rate.setAttribute("class", "rate");
-    p_rate.innerText = add_products[i].price ;
+    const productObj = add_products[i];
+    console.log(productObj);
+    console.log(productObj.price +"-" +(productObj.price/100)*productObj.offers);
+    p_rate.innerText = "Rs : " + (productObj.price-((productObj.price/100)*productObj.offers));
     div_product_content.append(p_rate);
+    
+   
 
     //  <s class=s1> </s>
     const s_s1 = document.createElement("s");
@@ -176,7 +181,7 @@ for (let i = 0; i < add_products.length; i++) {
     s_s1.innerHTML = "Rs "+add_products[i].price;
     div_product_content.append(s_s1);
 
-    //  <div class=star> </div>
+    /* //  <div class=star> </div>
     const div_star = document.createElement("div");
     div_star.setAttribute("class", "star");
     div_product_content.append(div_star);
@@ -187,7 +192,7 @@ for (let i = 0; i < add_products.length; i++) {
       i_fa.setAttribute("class", "fa fa-star");
       i_fa.setAttribute("style", "font-size:24px");
       div_star.append(i_fa);
-    }
+    } */
 
     // a button
     //const a_but = document.createElement("a");
