@@ -37,7 +37,7 @@
     <form action="update_address" method="POST">
         <!-- <div class="total"> -->
         <div class="form-group">
-            <input type="text" class="form-control"  name = "name" id="inputName" value = "<%=seller.getName() %>" pattern="[a-zA-Z0-9]+" placeholder="Name" required>
+            <input type="text" class="form-control"  name = "name" id="inputName" value = "<%=seller.getName() %>" pattern="^[A-Za-z]+(\\s[A-Za-z]+)*$" placeholder="Name" required>
 
             <input type="text" class="form-control" name = "address"  id="inputStreet" value = "<%=seller.getAddress() %>" placeholder="Street" required>
 

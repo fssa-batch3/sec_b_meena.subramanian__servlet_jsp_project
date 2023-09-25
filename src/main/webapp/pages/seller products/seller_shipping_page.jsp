@@ -59,6 +59,12 @@
 
         </div>
     </header>
+    <% if(order.isEmpty()){ %>
+	
+	<p style="margin: 243px; font-size: -webkit-xxx-large;  font-weight: bold; margin-left: 23rem;"> You don't have any orders! </p>
+
+
+<% } else { %>
     <section class="order_card">
  <% for (int i=0; i<product.size(); i++) { %>
         <div class="wat"> 
@@ -66,14 +72,16 @@
             <div class="product-content">
                 <h3 class="product-name"><%=product.get(i).getName() %></h3>
                 <p class="s1">Qty: <%=order.get(i).getBuyQuantity() %></p>
-                <p class="s1"><%=product.get(i).getName() %></p>
+                <p class="s1"><%=order.get(i).getName() %></p>
                 <p class="s1"><%=order.get(i).getAddress() %></p>
                 <p class="s1"><%=order.get(i).getVillage() %></p>
-                <button class="buy">
+                <p class = "s1"><%=order.get(i).getPincode() %></p>
+               <!--  <button class="buy">
                     <strong>Shipped</strong>
-                </button>
+                </button> -->
             </div> 
     <% } %>
+     <% } %>
         <!-- </div> -->
 
         <!-- <div class="wat">

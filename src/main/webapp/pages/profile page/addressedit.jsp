@@ -32,7 +32,7 @@ User user = (User) request.getAttribute("editAddress");
     <form action="update" method="POST">
         <!-- <div class="total"> -->
         <div class="form-group">
-            <input type="text" class="form-control"  name = "name" id="inputName" value = "<%=user.getName() %>" pattern="[a-zA-Z0-9]+" placeholder="Name" required>
+            <input type="text" class="form-control"  name = "name" id="inputName" value = "<%=user.getName() %>" pattern="^[A-Za-z]+(\\s[A-Za-z]+)*$" placeholder="Name" required>
 
             <input type="text" class="form-control" name = "address"  id="inputStreet" value = "<%=user.getAddress() %>" placeholder="Street" required>
 

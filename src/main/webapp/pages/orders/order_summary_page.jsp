@@ -97,8 +97,8 @@
                                 <div>
                                   
                                         
-                                   <p class="price" id="firstchild2">Item:<%=product.getQuantity()%></p>
-                                    <p class="price">Total Price : <%=order.getPrice()*product.getQuantity()%></p>
+                                   <p class="price" id="firstchild2">Item:<%=order.getBuyQuantity()%></p>
+                                    <p class="price">Total Price :  Rs:<%=order.getPrice()*order.getBuyQuantity()%></p>
                   
                                 </div>
                                 <div>

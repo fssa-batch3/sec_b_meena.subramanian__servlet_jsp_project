@@ -100,6 +100,13 @@
 					</a> </strong>
 
 				</button>
+				
+				<button class="that" ">
+					<a href= "/kaithariweb/pages/buy now page/add to cart.jsp"> <i class="fa fa-shopping-cart"
+						style="font-size: 15px; color: black; margin-right: 10px;"></i>ADD
+						TO CART
+					</a>
+				</button>
 
 			</div>
 
@@ -191,6 +198,8 @@
 								NOW</strong>
 						</a>
 					</button>
+					
+					
 				</div>
 
 			</div>
@@ -313,7 +322,7 @@
 
 
         // 
-        const product_upload = JSON.parse(localStorage.getItem("product_crud"));
+       /*  const product_upload = JSON.parse(localStorage.getItem("product_crud"));
         const product_id = new URLSearchParams(window.location.search).get("product");
         const product = product_upload.find(
             (y) => y.product_uuid === product_id
@@ -330,7 +339,7 @@
             const description = (document.getElementById("description").innerText = product.descrip);
             const dpercentage = (document.getElementById("percentage").innerText = product.productoffer+"% off");
         }
-
+ */
         // wasing instruction
 
         const Cotton_Saree =
@@ -352,7 +361,7 @@
             "  Avoid using bleach or harsh chemicals." + "                " + " Gently wash and rinse the vesti." +
             " Tumble dry on low heat or hang it to dry." + "            " + "  Iron the vesti at a medium to high heat setting if necessary."
 
-        const instruction = document.getElementById("instruction");
+        /* const instruction = document.getElementById("instruction");
 
         if (product.productreview == "Silk Saree") {
             instruction.innerText = Silk_Saree;
@@ -363,7 +372,7 @@
         } else if (product.productreview == "Pumpar Cotton Saree") {
 
             instruction.innerText = Cotton_Saree;
-        }
+        } */
 
 
 

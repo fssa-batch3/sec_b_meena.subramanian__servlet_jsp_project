@@ -32,7 +32,7 @@
 				<div class="name" style="margin-top: 30px;">
 
 					<input type="text" name="name" id="name" placeholder="Name"
-						pattern="[a-zA-Z0-9]+" value="Meena" required>
+						pattern="^[A-Za-z]+(\\s[A-Za-z]+)*$" value="Meena" required>
 				</div>
 
 				<div class="mail" style="margin-top: 15px;">

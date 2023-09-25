@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.fssa.kaithari.exception.PersistenceException;
 import in.fssa.kaithari.exception.ServiceException;
 import in.fssa.kaithari.exception.ValidationException;
 import in.fssa.kaithari.model.Product;
+import in.fssa.kaithari.model.Seller;
 import in.fssa.kaithari.model.User;
 import in.fssa.kaithari.service.ProductService;
+import in.fssa.kaithari.service.SellerService;
 import in.fssa.kaithari.service.UserService;
 
 /**
@@ -37,11 +40,11 @@ public class FindByUserProductServlet extends HttpServlet {
 	        try {
 	        	ProductService productservice = new ProductService();
 	            Product product = productservice.findProductById(productId);
-	            UserService userService = new UserService();
-	            User user = userService.findById(product.getSellerId());
+	            SellerService sellerService = new SellerService();
+	            Seller seller = sellerService.findById(product.getSellerId());
 	            if (product != null) {
 	                request.setAttribute("productDetails", product);
-	                request.setAttribute("sellerName", user.getName());
+	                request.setAttribute("sellerName", seller.getName());
 	                RequestDispatcher dispatcher = request.getRequestDispatcher("/pages/products/product_details.jsp");
 	                dispatcher.forward(request, response);
 	            } else {
@@ -51,7 +54,9 @@ public class FindByUserProductServlet extends HttpServlet {
 	            e.printStackTrace();
 	        } catch (ValidationException e) {
 	            e.printStackTrace();
-	        }
+	        } catch (PersistenceException e) {
+				e.printStackTrace();
+			}
 	}
 
 

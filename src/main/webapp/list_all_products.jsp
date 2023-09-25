@@ -150,6 +150,15 @@ td button:hover {
 	//int sellerId = 4;
 	Set<Product> productlist=new ProductService().findProductBySellerId(sellerId);
 	%>
+	
+	<% if(productlist.isEmpty()){ %>
+	
+		<p style="margin: 243px; font-size: -webkit-xxx-large;  font-weight: bold; margin-left: 23rem;"> You did not add any products ! </p>
+
+
+	<% } else { %>
+	
+	
 
 
 	<div class="hol"></div>
@@ -272,6 +281,8 @@ for (let i = 0; i < product_upload.length; i++) {
        document.querySelector("div.hol").append(div_wat);
        
   }
+  
+<% } %>
 
 </script>
 </body>

@@ -45,10 +45,10 @@
                         <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value="Meenu@2343" placeholder="password" required>
                     </div>
                     <p style="font-size: 13px;"> Pattern : Minimum 8 characters include Uppercase,<br>  Lowercase, Number and Special characters. </p>
-                    <div class="forget">
+                    <!-- <div class="forget">
                         <a href="#" style="color: rgb(71, 159, 118);">Forget Password</a>
                     </div>
-
+ -->
                     <button class="sign" type="submit">
                         <b style="color: black;">Sign In</b>
                     </button>

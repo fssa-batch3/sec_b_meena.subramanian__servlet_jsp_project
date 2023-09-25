@@ -81,12 +81,21 @@
 			<div class="search">
 				<input type="hidden" placeholder="search">
 			</div> 
+			
+			<div class="cart">
+				<a
+					href="<%=request.getContextPath()%>/pages/buy now page/add to cart.jsp"><i
+					class="fa fa-shopping-cart" style="font-size: 24px; color: black;"></i></a>
+			</div>
 
 			<div class="accound">
 				<a href="<%=request.getContextPath()%>/user/profile"><i
 					class="fa fa-user-circle-o" style="font-size: 24px; color: black;"></i>
 				</a>
 			</div>
+			
+			
+			
 			<div class="order">
 				<a href="<%=request.getContextPath()%>/user/my_orders"><i
 					class="fa fa-shopping-bag" style="font-size: 22px; color: black;"></i></a>

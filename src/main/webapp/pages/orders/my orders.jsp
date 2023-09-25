@@ -205,14 +205,17 @@
 	<script>
 
 	let orderArray=<%= new ObjectMapper().writeValueAsString(order) %>;
-	
-	
-	
 	let productList=<%= new ObjectMapper().writeValueAsString(products) %>;
+	
+	<% if(order.isEmpty()){ %>
+	
+	<p style="margin: 243px; font-size: -webkit-xxx-large;  font-weight: bold; margin-left: 23rem;"> You don't have any products buy  </p>
+
+
+<% } else { %>
 
 	
         for (let i = 0; i < orderArray.length; i++){ 
-        	
         	
 				console.log(productList);
         		console.log(orderArray[i].productId);
@@ -265,16 +268,23 @@
                 quantity.classList.add("quantity");
                 quantity.textContent = "quantity:" + orderArray[i].buyQuantity;
                 
+                	
+                
+                
                 const cancelOrderLink = document.createElement("a");
                 cancelOrderLink.href = "/kaithariweb/user/cancel_order?order_id=" + orderArray[i].id;
                 cancelOrderLink.textContent = "Cancel Order";
-/* 
-                if (orderArray[i].cancel_order) {
+                                
+                /* if(cancel_order == 1){
+                	 cancelOrderLink.style.display = "block";
+                } */
+
+              /*   if (orderArray[i].cancel_order) {
                     cancelOrderLink.style.display = "none";
                 } else {
                     cancelOrderLink.style.display = "block";
-                }
- */
+                } */
+
                /*  const cancelOrderLink = document.createElement("a");
                 cancelOrderLink.href = "/kaithariweb/user/cancel_order?order_id=" + orderArray[i].id;
                 cancelOrderLink.textContent = "Cancel Order"; */
@@ -282,10 +292,6 @@
                 cancelOrder.classList.add("cancel_order");
                 cancelOrder.setAttribute("id", orderArray[i].id); */
 
-                // Append the link and the paragraph to the card content div
-               
-
-                // Append the heading and quantity to the card content div
 
                 cardContentDiv.appendChild(heading);
                 cardContentDiv.appendChild(quantity);
@@ -297,10 +303,7 @@
                 costDiv.classList.add("cost");
 
 
-                let paragraph = document.createElement('p');
-                paragraph.setAttribute('class', 'product_price');
-                paragraph.setAttribute('style', 'font-size: 11px; margin-top: -30px; margin-bottom: 30px; color:#7d8993;');
-                paragraph.innerHTML = "delivered by " ;
+                
 
                 // Create the product price paragraph
                 const productPrice = document.createElement("p");
@@ -315,7 +318,7 @@
                 freeShipping.textContent = "free shipping";
 
                 // Append the product price and free shipping to the cost div
-                costDiv.appendChild(paragraph);
+                /* costDiv.appendChild(paragraph); */
                 costDiv.appendChild(productPrice);
                 costDiv.appendChild(freeShipping);
 
@@ -324,9 +327,31 @@
                 ordersContainer.appendChild(cardContentDiv);
                 ordersContainer.appendChild(costDiv);
 
-
+                /* document.getElementById("a").addEventListener("click", function() {
+                    alert("Order has been canceled.");
+                }); */
                 document.querySelector("div.cards").append(ordersContainer);
         }
+        <% } %>
+        
+       /*  document.addEventListener("DOMContentLoaded", function () {
+        	  const cancelButtons = document.querySelectorAll(".cancel_order");
+
+        	  cancelButtons.forEach((cancelButton) => {
+        	    cancelButton.addEventListener("click", function () {
+        	      const orderId = this.getAttribute("data-order-id");
+        	      const cardContentDiv = this.closest(".orders").querySelector(".card-content");
+
+        	      // Change the text to "Order Cancelled"
+        	      cardContentDiv.querySelector(".cancel-order").textContent = "Order Cancelled";
+
+        	      // Disable the button
+        	      this.style.display = "none";
+
+        	      // You can also make an AJAX request to your server to update the order status as "Cancelled" here.
+        	    });
+        	  });
+        	}); */
 /* 
 	const cancelButtons = document.querySelectorAll(".cancel_order");
 	const orderCard = document.querySelectorAll(".product_1");

@@ -33,23 +33,19 @@
 	}
 	%> --%>
 
-
-
-
-
- <section class="new">
+<section class="new">
             <section class="total">
                 <p> Start For Free</p>
                 <h1>Create New Account</h1>
                 <form action="create" method="post">
                     <div class="name" style="margin-top: 30px;">
 
-                        <input type="text" name="name" id="name" placeholder="Name" pattern="[a-zA-Z0-9]+( [a-zA-Z0-9]+)*" required>
+                        <input type="text" name="name" id="name" placeholder="Name" pattern="^[A-Za-z]+(\\s[A-Za-z]+)*$" required>
                     </div>
                      <div class="mail" style="margin-top: 15px;">
 
                         <input type="email" name = "email" placeholder="Email" id="email"
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  required>
+                            pattern=[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" required>
                     </div>
                      <div class="mobile_number" style="margin-top: 30px;">
 
