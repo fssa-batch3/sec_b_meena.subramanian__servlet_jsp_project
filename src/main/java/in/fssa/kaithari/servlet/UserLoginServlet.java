@@ -1,7 +1,7 @@
 package in.fssa.kaithari.servlet;
 
 import java.io.IOException;
-
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,6 +31,9 @@ public class UserLoginServlet extends HttpServlet {
 	    
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	        
+	    	
+	    	  PrintWriter out = response.getWriter();
+			
 	        try {
 	            String email = request.getParameter("email");
 	            String password = request.getParameter("password");
@@ -49,7 +52,10 @@ public class UserLoginServlet extends HttpServlet {
 	           
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	            response.sendRedirect(request.getContextPath()+"/logion page.jsp");
+	            out.println("<script>alert('"+ e.getMessage() +"');</script>");
+		 		out.println("<script>window.history.back();</script>");
+				/* response.sendRedirect(request.getContextPath()+"/logion page.jsp"); */
+	            
 	        } 
 	    }
 	    

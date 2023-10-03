@@ -28,13 +28,12 @@ Product productService = (Product) request.getAttribute("productDetails");
      <header>
 <jsp:include page="/header.jsp" />
 </header>
-           
     <div class="total">
 
         <div class="left">
             <div class="image">
                 <img id="imagee" alt="photo" height="460px" width="400px" src="<%= productService.getImage() %>">
-
+                                                                
             </div>
             <!-- <div class="sub-images">
                     <img class="s1" src="../../assets/img/10.jpeg" alt="photo" height="80px" width="80px" />

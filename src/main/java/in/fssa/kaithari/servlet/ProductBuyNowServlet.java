@@ -93,6 +93,7 @@ public class ProductBuyNowServlet extends HttpServlet {
 	        int buyQuantity = Integer.parseInt(request.getParameter("quantity"));
 	        int pincode = Integer.parseInt(request.getParameter("pincode"));
 	        int price = Integer.parseInt(request.getParameter("price"));
+	        long mobileNumber = Long.parseLong(request.getParameter("mobile_number"));
 	        System.out.println(price);
 	  
 	        // Create an Order object with the extracted values
@@ -110,6 +111,7 @@ public class ProductBuyNowServlet extends HttpServlet {
 	        order.setBuyQuantity(buyQuantity);
 	        order.setPincode(pincode);
 	        order.setPrice(price);
+	        order.setMobileNumber(mobileNumber);
 	        
 	         // Current timestamp
 	        

@@ -102,7 +102,7 @@
 				</button>
 				
 				<button class="that" ">
-					<a href= "/kaithariweb/pages/buy now page/add to cart.jsp"> <i class="fa fa-shopping-cart"
+					<a ><i class="fa fa-shopping-cart"
 						style="font-size: 15px; color: black; margin-right: 10px;"></i>ADD
 						TO CART
 					</a>
@@ -297,12 +297,105 @@
 
 	<script>
 
+	<%HttpSession  session2 = request.getSession();
+    //String userId = (String)session2.getAttribute("userId");
+    %>
 
+<%-- 
+    function carts(e) {
+        e.preventDefault();
+        const addto_cart = JSON.parse(localStorage.getItem("addto_cart")) || [];
+        let user_unique = <%= userId.in %>;
+       
+      <%  if (userId == null) { %>
+      alert("You are not logged in");
+            window.location.href = "../login page/logion page.html";
+            return;
+      <%  }else { %>
 
+        const product_uuid = new URLSearchParams(window.location.search).get(
+            "product"
+        );
+        const product_price = product_crud.find(
+            (g) => g.product_uuid === product_uuid
+        );
 
+        const prod_data = addto_cart.find(
+            (q) =>
+                q.product_id === product_uuid && q.buyer_id === user_unique
+        );
 
+        if (prod_data) {
+            alert("This Product Is Already Added In Your Cart Page");
+        } else {
+            const prod = {
+                product_id: product_uuid,
+                buyer_id: user_unique,
+                price: product_price.productprice,
+                quantity: 1,
+                seller_id: product_price.seller_id
+            };
 
+            addto_cart.push(prod);
+            localStorage.setItem("addto_cart", JSON.stringify(addto_cart));
+            alert("Your Product Has Been Added To Your Cart");
+        }
+    }
+ --%>
 
+      
+      const cart_products = document.querySelector("button.that");
+      
+      <% HttpSession session3 = request.getSession(); %>
+      <% Integer userId = (Integer) session3.getAttribute("userId"); %>
+      
+      cart_products.addEventListener("click", () => {
+          <% if (userId == null) { %>
+              alert("You are not logged in");
+              console.log("add to cart array");
+          <% } else { %>
+              
+          let user_id = <%= userId.intValue() %>;
+              let add_to_cart = JSON.parse(localStorage.getItem("cart")) || [];
+              console.log(add_to_cart);
+              let id = <%= product.getId()%>;
+              
+              const exist =
+                  add_to_cart.length &&
+                  JSON.parse(localStorage.getItem("cart")).some(
+                      (data) => data.product_id == id && data.user_id == user_id 
+                  );
+              
+              if (exist) {
+                  alert("This product has already been added");
+              } else {
+                  alert("This product is added to your cart.");
+                  
+                  let productName = '<%= product.getName() %>';
+                  let imageUrl = '<%= product.getImage() %>';
+                  
+                  add_to_cart.push({
+                      product_quantity: 1,
+                      seller_id: <%= product.getSellerId()%>,
+                      user_id: user_id,
+                      product_name: productName,
+                      product_image: imageUrl,
+                      product_id: <%= product.getId() %>,
+                      actual_price: <%= product.getPrice() %>,
+                      current_price: <%= (product.getPrice()-((product.getPrice()/100)*product.getOffers()))%>,
+                      discount: <%= product.getOffers() %>
+                  });
+                  
+                  const cart_count = add_to_cart.filter((pdt) => pdt.buyer_id === user_id).length;
+                  console.log(cart_count);
+
+                  localStorage.setItem("cart", JSON.stringify(add_to_cart));
+                  
+                  window.location.reload();
+              }
+              <% } %>
+
+      });
 
 
         // review popup

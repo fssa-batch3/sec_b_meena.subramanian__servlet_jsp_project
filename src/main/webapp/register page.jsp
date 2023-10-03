@@ -40,16 +40,16 @@
                 <form action="create" method="post">
                     <div class="name" style="margin-top: 30px;">
 
-                        <input type="text" name="name" id="name" placeholder="Name" pattern="^[A-Za-z]+(\\s[A-Za-z]+)*$" required>
+                        <input type="text" name="name" id="name" placeholder="Name"  required>
                     </div>
                      <div class="mail" style="margin-top: 15px;">
 
                         <input type="email" name = "email" placeholder="Email" id="email"
-                            pattern=[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" required>
+                            required>
                     </div>
                      <div class="mobile_number" style="margin-top: 30px;">
 
-                        <input type="number" name="mobile_number" class="number_in" id="name" placeholder="Mobile Number"  pattern="[0-9]{,10}" required>
+                        <input type="number" name="mobile_number" class="number_in" id="name" placeholder="Mobile Number"  pattern="[6-9][1][0-9]{9}" required>
                     </div>
                       <div class="address" style="margin-top: 30px;">
 

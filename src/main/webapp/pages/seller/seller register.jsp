@@ -93,10 +93,10 @@
 						type="file" name="id_image" class="Weaving" id="photo_img_upload">
 
 
-					<img class="check_img" src="../../assets/img/icon/grey_style.gif"
+					<img class="check_img" src="<%=request.getContextPath() %>/assets/img/icon/grey_style.gif"
 						style="display: none;" width="30px" height="30px" id="photo_load"
 						alt=""> <img class="check_img2"
-						src="../../assets/img/icon/check-mark.png" style="display: none;"
+						src="<%=request.getContextPath() %>/assets/img/icon/check-mark.png" style="display: none;"
 						width="20px" height="20px" id="photo_check" alt="">
 
 				</div>
@@ -112,7 +112,7 @@
 
 					<input type="password" name="confirm_password"
 						id="confirm_password" class="passs" value="Meenu@2343"
-						placeholder="Confirm Password" required>
+						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Confirm Password" required>
 				</div>
 				<p style="font-size: 13px;">
 					Pattern : Minimum 8 characters include Uppercase,<br>
@@ -184,7 +184,7 @@ document.getElementById("card_load").style.display="block";
     });
 });
 
-              //  API for store image in cloud
+//  API for store image in cloud
 // post image Upload API
 
 // const img_pre_div = document.getElementById("img_pre_div");

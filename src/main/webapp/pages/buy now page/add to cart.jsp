@@ -21,9 +21,9 @@
 
 	<header>
 		<jsp:include page="/header.jsp" />
-		<div class="item-count">
+		<!-- <div class="item-count">
 			<span>3</span>
-		</div>
+		</div> -->
 	</header>
 
 
@@ -140,19 +140,29 @@
 		src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
 
 	<script>
+       <%HttpSession  session2 = request.getSession();%>
+       <%Integer userId = (Integer) session2.getAttribute("userId");%>
+        
+        
+	
+    const addto_cart = JSON.parse(localStorage.getItem("cart"));
+         
+       /*  const product_crud = JSON.parse(localStorage.getItem("product_crud")); */
+        /* let total = 0;  */
 
-        const addto_cart = JSON.parse(localStorage.getItem("addto_cart"));
-        const user_unique = JSON.parse(localStorage.getItem("uniqueID_user"));
-        const product_crud = JSON.parse(localStorage.getItem("product_crud"));
-        let total = 0;
+        /* let order_all_bn = document.getElementById("buy_all_button");
+        const total_p = document.getElementById("tot"); */
+        
+         <%-- let user_id = <%= userId.intValue() %>  --%>
 
-        const order_all_bn = document.getElementById("buy_all_button");
-        const total_p = document.getElementById("tot");
+        const user_id =<%= userId.intValue() %>  // No need for intValue() if userId is already numeric
+
+        const cart_list = addto_cart.filter((user) => user.user_id == user_id); // Use strict equality (===) for comparison
+
+        console.log(cart_list);
 
 
-        const cart_list = addto_cart.filter(user => user.buyer_id === user_unique);
-
-        if (cart_list.length === 0) {
+        if (cart_list.length == 0) {
             const para = document.createElement("p");
             para.innerText = "There is No products Added in this page";
             para.setAttribute("class", "no_product")
@@ -161,11 +171,15 @@
             total_p.style.display = "none";
         }
         else {
-            for (let i = 0; i < addto_cart.length; i++) {
-                if (addto_cart[i].buyer_id === user_unique) {
+        	
+        	 let user_id = <%= userId.intValue() %>
+        	 
+        	
+            for (let i = 0; i < cart_list.length; i++) {
+               
 
-                    const prod_data = product_crud.find(product => product.product_uuid === addto_cart[i].product_id);
-                    console.log(prod_data);
+                    /* const prod_data = product_crud.find(product => product.product_uuid === addto_cart[i].product_id);
+                    console.log(prod_data); */
 
 
                     //  div_tag
@@ -174,7 +188,7 @@
 
                     // img
                     const img = document.createElement("img");
-                    img.setAttribute("src", prod_data.uppic);
+                    img.setAttribute("src", cart_list[i].product_image);
                     img.setAttribute("alt", "photo");
                     div_tag.append(img);
 
@@ -185,7 +199,7 @@
 
                     // para
                     const para = document.createElement("p");
-                    para.innerText = prod_data.productname;
+                    para.innerText = cart_list[i].product_name;
                     div_details.append(para);
 
                     // h6
@@ -198,15 +212,13 @@
                     a.setAttribute("id", "remove");
                     // a.setAttribute("onclick", "remove(event,prod_data.product_uuid)")
                     a.innerText = "Delete";
-                    a.onclick = function (event) {
-                        remove(event, prod_data.product_uuid);
-                    };
+                    a.setAttribute("data-remove", cart_list[i].product_id);
                     h6.append(a);
 
                     // div
                     const div_quan = document.createElement("div");
                     div_quan.setAttribute("class", "quan");
-                    div_quan.setAttribute("data-id", addto_cart[i].product_id);
+                    div_quan.setAttribute("data-remove", cart_list[i].product_id);
                     div_tag.append(div_quan);
 
                     // input
@@ -214,26 +226,26 @@
                     input.setAttribute("type", "number");
                     input.setAttribute("class", "quantity");
                     input.setAttribute("min", "1");
-                    input.setAttribute("value", addto_cart[i].quantity);
+                    input.setAttribute("value", cart_list[i].product_quantity);
                     div_quan.append(input);
 
                     // div
                     const div_ten = document.createElement("div");
                     div_ten.setAttribute("class", "ten");
-                    div_ten.innerText = `₹ ${prod_data.discountprice * addto_cart[i].quantity}`;
+                    div_ten.innerText = 'Rs : ' + cart_list[i].current_price * cart_list[i].product_quantity;
                     div_tag.append(div_ten);
 
                     let total = 0;
                     for (let k = 0; k < addto_cart.length; k++) {
-                        total = "₹" + prod_data.discountprice * addto_cart[k].quantity;
+                        total = 'Rs : ' + cart_list[i].current_price * cart_list[i].product_quantity;
                     }
                     document.getElementById("totalPrice").innerText = total;
 
                     document.querySelector("div.addcar").append(div_tag);
                 }
             }
-        }
-        const update_quan = document.querySelectorAll("input.quantity");
+   
+       /*  const update_quan = document.querySelectorAll("input.quantity");
         update_quan.forEach((findUuid) => {
             findUuid.addEventListener("click", (e) => {
                 const parent = e.currentTarget.parentNode;
@@ -249,9 +261,84 @@
                 localStorage.setItem("addto_cart", JSON.stringify(addto_cart));
                 window.location.reload();
             });
+        }); */
+        
+    /////    QUANTITY INCREASE OR DECREASE FUNCTION   //////
+
+
+        const product_quantity = document.querySelectorAll(".quan");
+
+        product_quantity.forEach((add) => {
+          add.addEventListener("change", (e) => {
+            
+        	const productId = e.currentTarget.dataset.remove;
+        	console.log(productId);
+
+            localStorage.setItem("product_id", JSON.stringify(productId));
+
+            const ptId = JSON.parse(localStorage.getItem("product_id"));
+			/* console.log(priceid); */
+            
+            /* const all_products = JSON.parse(localStorage.getItem("cart"));
+            console.log(all_products); */
+
+            const parent = e.currentTarget.closest(".tag ");
+
+            const qauntity = parent.querySelector(".quantity").value;
+
+            if (qauntity > 10) {
+              
+              alert("Only 10 items can be ordered at a time.");
+            
+            } else if(qauntity == 0){
+            	alert("Invalid quantity.");
+            } else if (qauntity < 0) {
+            	alert("Invalid quantity.")
+            }
+
+            else {
+
+             /*  const size_0f_pdt = parent.querySelector(".size").innerText;
+            console.log(size_0f_pdt);
+
+            
+            const parts = size_0f_pdt.split(":");
+
+            const key = parts[0].trim();
+          const value = parts[1].trim();   */
+
+          const all_products = JSON.parse(localStorage.getItem("cart"));
+          console.log(all_products);
+          
+          console.log(productId);
+          console.log(user_id);
+          
+             const pdts = all_products.find(
+              (a) => a.product_id == ptId && a.user_id == user_id 
+            );
+            console.log(pdts); 
+
+            let ogPrice = pdts.current_price;
+
+            const cartPrice = ogPrice * qauntity;
+
+            ogPrice = cartPrice;
+
+            pdts.product_quantity = qauntity;
+
+            localStorage.setItem("cart", JSON.stringify(all_products));
+
+            window.location.reload();
+
+            }
+
+          });
         });
 
-        function remove(e, uniqueid) {
+        
+        
+
+       /*  function remove(e, uniqueid) {
             if (!e || typeof uniqueid !== "string") {
                 return;
             }
@@ -270,14 +357,54 @@
                 localStorage.setItem("addto_cart", JSON.stringify(addto_carts));
                 window.location.reload();
             }
-        }
+        } */
+
+        
+        const products = document.querySelectorAll("button.remove");
+
+        products.forEach((check) => {
+          check.addEventListener("click", (e) => {
+            const product_id = e.currentTarget.dataset.remove;
+
+            localStorage.setItem("pdt_id", JSON.stringify(product_id));
+
+            if (window.confirm("Are you sure to remove this product?")) {
+             
+            	const id = JSON.parse(localStorage.getItem("pdt_id"));
+
+              const all_products = JSON.parse(localStorage.getItem("cart"));
+
+              const pdts = all_products.find(
+                (f) => f.product_id == product_id && f.user_id == user_id
+              );
+              
+              console.log(pdts);
+
+              const indexOfProduct = all_products.indexOf(pdts);
+              
+              console.log(indexOfProduct);
+
+              all_products.splice(indexOfProduct, 1); 
+
+             /*  const cart_count = JSON.parse(localStorage.getItem("cart_count"));
+
+              const cart_length = cart_count-1;
+
+              localStorage.setItem("cart_count", JSON.stringify(cart_length)); */
+
+              localStorage.setItem("cart", JSON.stringify(all_products));
+            }
+
+            window.location.reload();
+          });
+        });
 
 
         // for buy all function
 
 
 
-        order_all_bn.addEventListener("click", function () {
+       /*  order_all_bn.addEventListener("click", function () {
 
             const order_list = JSON.parse(localStorage.getItem("order_list")) || [];
 
@@ -316,7 +443,7 @@
 
 
         });
-
+ */
         function minus_quantity(qty,product_id){
             const product_crud=JSON.parse(localStorage.getItem("product_crud"));
 
@@ -330,9 +457,19 @@
 
         const change_add = document.getElementById("change_add");
         change_add.addEventListener("click",function(){
-            window.location.href='../profile page/youraddress.jsp'
+            window.location.href='./profile page/addressedit.jsp'
         })
-
+        
+        
+        //// redirect to cart buy now page when they click buy now
+        
+        
+        document.querySelector("button.buy_all_button").addEventListener("click",() => {
+	  window.location.href = "/kaithariweb/pages/buy now page/cart_buy_now.jsp";
+	} );        
+       
+        
+        
     </script>
 
 </body>
