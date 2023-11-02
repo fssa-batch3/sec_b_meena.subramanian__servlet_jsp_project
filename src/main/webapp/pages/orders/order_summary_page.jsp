@@ -39,10 +39,17 @@
                 <div class="flex_left">
                     <div class="flexHeader">
                         <div class="order-summary">
+                        <%if(!order.isCancelOrder()){ %>
                             <div class="order-status">Arriving date</div>
                             <div id="orderDate">
                                 On the Way
                             </div>
+                            <%}else{ %>
+                            <div class="order-status">Your Order</div>
+                            <div id="orderDate" Style="color:red">
+                                Canceled
+                            </div>
+                            <%} %>
                             <!-- <div id="orderDay">
                                 Friday
                             </div> -->

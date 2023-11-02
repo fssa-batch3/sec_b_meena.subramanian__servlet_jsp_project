@@ -29,7 +29,7 @@
 	%>
 
 	<div class="logo">
-		<a href="index.jsp"><img
+		<a href="<%=request.getContextPath()%>/index.jsp"><img
 			src="<%=request.getContextPath()%>/assets/img/image-removebg-preview.png"
 			alt="logo" width="100px" height="80px"></a>
 	</div>
@@ -51,9 +51,9 @@
 		<div class="search">
 			<input type="hidden" placeholder="search">
 		</div>
-		<a href="<%=request.getContextPath()%>/user/login"><button>Log
-				in</button></a> <a href="<%=request.getContextPath()%>/user/new"><button>Sign
-				Up</button></a>
+		<a href="<%=request.getContextPath()%>/user/login"><button class="log">Log
+				in</button></a> 
+				<a href="<%=request.getContextPath()%>/user/new"><button class="log">Sign Up</button></a>
 
 		<%
 		} else {

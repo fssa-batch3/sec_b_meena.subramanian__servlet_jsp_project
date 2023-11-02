@@ -49,7 +49,7 @@ public class SellerLoginServlet extends HttpServlet {
                 System.out.println("Login Successful");
                 int id = seller.getId();
                 request.getSession().setAttribute("sellerId", id);
-                response.sendRedirect(request.getContextPath()+"/list_all_products.jsp");
+                response.sendRedirect(request.getContextPath()+"/list_all_products");
             }
 
         } catch (ServiceException e) {

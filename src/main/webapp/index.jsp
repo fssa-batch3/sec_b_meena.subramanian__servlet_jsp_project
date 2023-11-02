@@ -22,6 +22,7 @@
     display: flex;
     /* justify-content: space-around; */
     align-items: center;
+    margin-top: 15px;    
     /* flex-wrap: wrap; */
     /* gap: 20px; */
 }
@@ -38,8 +39,8 @@
 
 /* Style for card images */
 .card img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: 213px;
 }
 
 /* Style for card headings */

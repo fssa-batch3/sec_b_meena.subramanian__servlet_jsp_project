@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="buttons">
-                <a href="/seller/logout">
+                <a href="logout">
                     <button type="submit" class="log">
                         <strong>LOG OUT</strong>
                     </button>

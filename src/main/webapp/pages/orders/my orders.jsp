@@ -207,12 +207,12 @@
 	let orderArray=<%= new ObjectMapper().writeValueAsString(order) %>;
 	let productList=<%= new ObjectMapper().writeValueAsString(products) %>;
 	
-	<% if(order.isEmpty()){ %>
+	<%-- <% if(order.isEmpty()){ %>
 	
-	<p style="margin: 243px; font-size: -webkit-xxx-large;  font-weight: bold; margin-left: 23rem;"> You don't have any products buy  </p>
+	/*  <p style=" margin: 243px; font-size: -webkit-xxx-large;  font-weight: bold; margin-left: 23rem; " > You dont have any products buy  </p> */
 
 
-<% } else { %>
+<% } else { %> --%>
 
 	
         for (let i = 0; i < orderArray.length; i++){ 
@@ -271,19 +271,23 @@
                 	
                 
                 
-                const cancelOrderLink = document.createElement("a");
-                cancelOrderLink.href = "/kaithariweb/user/cancel_order?order_id=" + orderArray[i].id;
-                cancelOrderLink.textContent = "Cancel Order";
+               
                                 
-                /* if(cancel_order == 1){
+          /*      if(orderArray[i]. == 1){
                 	 cancelOrderLink.style.display = "block";
                 } */
-
-              /*   if (orderArray[i].cancel_order) {
-                    cancelOrderLink.style.display = "none";
+             	const cancelOrderLink = document.createElement("a");
+                console.log(orderArray[i].cancelOrder);
+                
+               if (orderArray[i].cancelOrder==1) {
+                   cancelOrderLink.textContent = "Canceled";
+                   cancelOrderLink.style.color = "red";
                 } else {
+               
+                    cancelOrderLink.href = "/kaithariweb/user/cancel_order?order_id=" + orderArray[i].id;
+                    cancelOrderLink.textContent = "Cancel Order";
                     cancelOrderLink.style.display = "block";
-                } */
+                } 
 
                /*  const cancelOrderLink = document.createElement("a");
                 cancelOrderLink.href = "/kaithariweb/user/cancel_order?order_id=" + orderArray[i].id;
@@ -332,8 +336,8 @@
                 }); */
                 document.querySelector("div.cards").append(ordersContainer);
         }
-        <% } %>
-        
+<%--         <% } %>
+ --%>        
        /*  document.addEventListener("DOMContentLoaded", function () {
         	  const cancelButtons = document.querySelectorAll(".cancel_order");
 

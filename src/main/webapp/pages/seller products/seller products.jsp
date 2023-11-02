@@ -83,14 +83,14 @@
                 <s id="normal_price"><%="Rs : " +product.getPrice() %></s>
                 </div>
 
-                <div class="review">
+                <!-- <div class="review">
                 REVIEW :
                 <i class="fa fa-star" style="font-size:24px; color:orange;"></i>
                 <i class="fa fa-star" style="font-size:24px; color:orange;"></i>
                 <i class="fa fa-star" style="font-size:24px; color:orange;"></i>
                 <i class="fa fa-star-o" style="font-size:24px; color:orange;"></i>
                 <i class="fa fa-star-o" style="font-size:24px; color:orange;"></i>
-                </div>
+                </div> -->
 
                 
 
@@ -114,6 +114,7 @@
                 <h3>Product Details</h3>
                 <p id="product_detail_para"><%=product.getDescription() %></p>
                 </div>
+
 
                 <div class="what">
                 <a href="/kaithariweb/product/edit?id=<%=product.getId() %>"><button class="the">

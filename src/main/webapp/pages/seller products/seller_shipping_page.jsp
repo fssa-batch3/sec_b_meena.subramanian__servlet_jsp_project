@@ -76,13 +76,20 @@
                 <p class="s1"><%=order.get(i).getAddress() %></p>
                 <p class="s1"><%=order.get(i).getVillage() %></p>
                 <p class = "s1"><%=order.get(i).getPincode() %></p>
-               <!--  <button class="buy">
+                
+                <%if(order.get(i).isCancelOrder()){ %>
+                <p Style="color:red; margin-top: 37px;">order cancelled by customer</p>
+                <%}else{ %>
+                 <button class="buy">
                     <strong>Shipped</strong>
-                </button> -->
+                </button> 
+                <%} %>
+                
             </div> 
+            </div>
     <% } %>
      <% } %>
-        <!-- </div> -->
+      
 
         <!-- <div class="wat">
             <img src="../../assets/img/10.jpeg" alt="photo" width="150" height="150" />

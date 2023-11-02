@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy Now Details</title>
 
-    <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/buy now details.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/assets/css/cart_buy_now.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +24,7 @@
 
 </head>
 <body>
+
 <header>
 <jsp:include page="/header.jsp" />
 </header>
@@ -55,13 +56,12 @@ User user1 = userSerice.findById(user_id);
 	
 
 	<div class="total">
-	<div class="amt">
-        Total amount : <p id="amt"> </p>
-    </div>
+	
 	   <div class="left">
-                                                                    
+                                                           
             </div>
-    <form>
+          
+    <form class ="right">
     <p id="stock_alert" style="color:red;"></p>
                 <h2 class="pers"> PERSONAL DETAILS </h2>
 
@@ -97,6 +97,9 @@ User user1 = userSerice.findById(user_id);
                             <input type="tel" name="mobile_number" value ="<%= user1.getMobileNumber() %>"  pattern="[6-9]{1}[0-9]{9}" id="phone" placeholder="+919876543201" required>
                         </div>
                     </div> 
+                     <div class="amt" style = "margin-top:30px; margin-left:85px;">
+        Total amount : <span id="amt"> </span>
+        </div>  
                 <div class="cash">
                     <p class="payment"> Payment Method: </p>
                     <div class="radio">
@@ -110,9 +113,12 @@ User user1 = userSerice.findById(user_id);
                     </button>
             </div>
         </form>
+        
+        <!-- <div class="amt" style = "margin-top:30px; margin-left:85px;">
+        Total amount : <span id="amt"> </span>
+        </div>  -->         
  
     <script>
-    
     
     const add_to_cart = JSON.parse(localStorage.getItem("cart"));
     
@@ -150,15 +156,15 @@ User user1 = userSerice.findById(user_id);
     div_details.append(h3);
 
     const p = document.createElement("p");
-    p.innerText = check_pdt[i].current_price;
+    p.innerText = " Rs : " + check_pdt[i].current_price;
     div_details.append(p);
 
     const s = document.createElement("s");
-    s.innerText = check_pdt[i].actual_price;
+    s.innerText = " Rs : " + check_pdt[i].actual_price ;
     p.append(s);
 
     const b = document.createElement("b");
-    b.innerText = check_pdt[i].discount;
+    b.innerText = " "+check_pdt[i].discount+ "%";
     p.append(b);
 
     const p_qty = document.createElement("p");
@@ -190,7 +196,7 @@ User user1 = userSerice.findById(user_id);
     document.querySelector("button.place").addEventListener("click",(e) => {
    	 e.preventDefault();
 
-   	const pdts = JSON.parse(localStorage.getItem("cart"));
+   	let pdts = JSON.parse(localStorage.getItem("cart"));
    	console.log(pdts);
    	
    	const name = document.getElementById("username").value;

@@ -28,6 +28,8 @@
             
             </div>
         </header>
+        
+        <% Integer sell=(Integer) request.getSession().getAttribute("sellerId");%>
 
         <section class="all">
 
@@ -39,7 +41,7 @@
                 <p class="content-1">
                     The term seller refers to a party that offers a good, service, or asset in return for payment. A seller can be an individual, corporation, government, or any other entity. In financial markets, a seller is a party that offers an asset they own or hold for purchase by someone else.</p>
                 <div class="btn">
-                    <a href="<%=request.getContextPath()%>/pages/seller/login">
+                    <a href="<%= request.getContextPath() %>/<%= (sell == null) ? "pages/seller/login" : "list_all_products" %>">
                         <button>
                             <b>Add New</b>
                         </button>

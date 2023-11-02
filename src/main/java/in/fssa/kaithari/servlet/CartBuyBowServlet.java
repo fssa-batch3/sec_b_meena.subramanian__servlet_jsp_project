@@ -33,7 +33,7 @@ javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet;
 		 
 		 int userId = userIdObject.intValue(); 
 		 
-		 Order order = new Order();
+		
 		 
 		 String jsonInput = request.getReader().lines().collect(Collectors.joining());
 		 
@@ -41,7 +41,7 @@ javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet;
 		 
 		 // Parse the received JSON object 
 		 JSONObject jsonObject = new JSONObject(jsonInput);
-		 
+		 System.out.println(jsonObject);
 		 
 		 
 		 // Extract the 'cart' array from the JSON object 
@@ -61,6 +61,8 @@ javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet;
 		 
 		 String getPinCode = (String) jsonObject.get("pincode");
 		 
+		// String getPrice  = (String) jsonObject.get("current_price");
+		 
 		 String getPhone = (String) jsonObject.get("phone");
 		 
 		 if(jsonArray!=null) {
@@ -76,11 +78,13 @@ javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet;
 				 int sellerId = itemObject.getInt("seller_id");
 		         
 				 int productId = itemObject.getInt("product_id");
+				 
 				 int currentPrice = (Integer)itemObject.getInt("current_price");
 				
 
+				 Order order = new Order();
+				 
 				 order.setBuyQuantity(productQuantity);
-
 				 order.setUserId(userId);
 				 order.setSellerId(sellerId);
 				 order.setProductId(productId);
@@ -89,9 +93,15 @@ javax.servlet.annotation.WebServlet; import javax.servlet.http.HttpServlet;
 				 order.setVillage(getVillage);
 				 order.setDistrict(getDistrict);
 				 order.setPincode(Integer.parseInt(getPinCode));
+				 order.setPrice(currentPrice);
 				 order.setMobileNumber(Long.parseLong(getPhone));
+				 
+				 System.out.print(order.toString());
+				 
 		         OrderService orderService = new OrderService();
 		         orderService.createOrder(order);
+		         
+		         
 		            
 		        }	           
 		 

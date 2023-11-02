@@ -19,6 +19,7 @@
 
 <body>
 
+
 	<header>
 		<jsp:include page="/header.jsp" />
 		<!-- <div class="item-count">
@@ -28,9 +29,9 @@
 
 
 
-	<div class="change">
+	<!-- <div class="change">
 		<p id="change_add">Change Address</p>
-	</div>
+	</div> -->
 
 	<div class="addcar"></div>
 
@@ -234,17 +235,24 @@
                     div_ten.setAttribute("class", "ten");
                     div_ten.innerText = 'Rs : ' + cart_list[i].current_price * cart_list[i].product_quantity;
                     div_tag.append(div_ten);
-
-                    let total = 0;
-                    for (let k = 0; k < addto_cart.length; k++) {
-                        total = 'Rs : ' + cart_list[i].current_price * cart_list[i].product_quantity;
-                    }
-                    document.getElementById("totalPrice").innerText = total;
-
+                    
                     document.querySelector("div.addcar").append(div_tag);
-                }
+
+
             }
-   
+            
+            let total = 0;
+            for (let k = 0; k < cart_list.length; k++) {
+                total += cart_list[k].current_price * cart_list[k].product_quantity;
+            } 
+            
+            console.log(total);
+            
+            document.getElementById("totalPrice").innerText = "Rs : " + total;
+             
+            }
+        
+        
        /*  const update_quan = document.querySelectorAll("input.quantity");
         update_quan.forEach((findUuid) => {
             findUuid.addEventListener("click", (e) => {
@@ -278,7 +286,6 @@
 
             const ptId = JSON.parse(localStorage.getItem("product_id"));
 			/* console.log(priceid); */
-            
             /* const all_products = JSON.parse(localStorage.getItem("cart"));
             console.log(all_products); */
 
@@ -455,10 +462,10 @@
         };
 
 
-        const change_add = document.getElementById("change_add");
+       /*  const change_add = document.getElementById("change_add");
         change_add.addEventListener("click",function(){
             window.location.href='./profile page/addressedit.jsp'
-        })
+        }) */
         
         
         //// redirect to cart buy now page when they click buy now

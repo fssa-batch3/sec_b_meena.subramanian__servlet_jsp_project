@@ -9,9 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.mindrot.jbcrypt.BCrypt;
+
 import in.fssa.kaithari.exception.ValidationException;
 import in.fssa.kaithari.model.User;
 import in.fssa.kaithari.service.UserService;
+import in.fssa.kaithari.util.Logger;
 
 
 
@@ -40,13 +44,15 @@ public class UserLoginServlet extends HttpServlet {
 	            UserService userService = new UserService();
 	            User user = userService.findByEmail(email);
 	            if (user == null) {
-	                System.out.println("User not found");
-	            } else if (!password.equals(user.getPassword())) {
-	                throw new ValidationException("invalid password");
-	            } else {
-	                System.out.println("Login Successfull:)");
-	                int id = user.getId();
-	                request.getSession().setAttribute("userId", id); 
+					Logger.info("User not found");
+				} else if (!BCrypt.checkpw(password, user.getPassword())) {
+					Logger.info("Incorrect Phone number or Password:(");
+					out.println("<script>alert('Incorrect Phone number or Password')</script>");
+					out.println("<script>window.history.back();</script>");
+				} else {
+					int id = user.getId();
+					Logger.info("Login Successfull:)");
+				   request.getSession().setAttribute("userId", id); 
 	                response.sendRedirect(request.getContextPath()+"/index.jsp");
 	            }
 	           
