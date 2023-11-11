@@ -43,7 +43,7 @@
                 <div class="btn">
                     <a href="<%= request.getContextPath() %>/<%= (sell == null) ? "pages/seller/login" : "list_all_products" %>">
                         <button>
-                            <b>Add New</b>
+                            <b style="color:white;v">Continue....</b>
                         </button>
                     </a>
                 </div>

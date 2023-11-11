@@ -46,7 +46,10 @@ Product productService = (Product) request.getAttribute("productDetails");
         <input type="hidden" name="product_id" value="<%= productService.getId() %>">
         <input type="hidden" name="user_id" value="<%= user.getId() %>">
         <input type="hidden" name="seller_id" value="<%= productService.getSellerId() %>">
-        <input type="hidden" name="price" value="<%= (productService.getPrice()-((productService.getPrice()/100)*productService.getOffers())) %>">
+        <input type="hidden" name="price" id="fixed" value="<%= (productService.getPrice()-((productService.getPrice()/100)*productService.getOffers())) %>">
+        
+              
+    
             <div class="right">
                 <h2> Kaithari </h2>
                 <h3 id="product_name" name="product_name"><%= productService.getName() %></h3>
@@ -125,7 +128,7 @@ Product productService = (Product) request.getAttribute("productDetails");
     if (parseInt(productQuantity) < 10 && parseInt(productQuantity) > 0) {
     	stockAlert.style.display = "block";
         stockAlert.innerText = "Only " + productQuantity + " stock left. Hurry up....";
-    } else if (parseInt(product.Quantity) === 0) {
+    } else if (parseInt(productQuantity) === 0) {
         stockAlert.innerText = "Out of Stock";
         placeOrderButton.style.opacity = "0.3";
         placeOrderButton.style.pointerEvents = "none";
@@ -133,6 +136,11 @@ Product productService = (Product) request.getAttribute("productDetails");
         stockAlert.style.display = "none";
     }
 
+    document.getElementById("quantity").addEventListener("change",function(){
+    	
+    	document.getElementById("price").value = document.getElementById("fixed").value*document.getElementById("quantity").value;
+    	
+    })
     </script>
 
 </body>

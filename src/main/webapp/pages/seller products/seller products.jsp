@@ -40,11 +40,11 @@
                     <input type="hidden" placeholder="search">
                 </div>
 
-                <div class="new">
+                <%-- <div class="new">
                     <a href="<%=request.getContextPath()%>/seller products/seller create product.jsp">
                         <button>Creat New</button>
                     </a>
-                </div>
+                </div> --%>
 
                 <div class="accound">
                     <a href="<%=request.getContextPath()%>/seller/profile">

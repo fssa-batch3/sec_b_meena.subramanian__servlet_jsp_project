@@ -95,7 +95,7 @@
 			<div class="card">
 			<a href="<%=request.getContextPath() %>/products/saree">
 				<img src="<%=request.getContextPath()%>/assets/img/homepage1.jpg" alt="Card 1">
-				<h2>Silk Srees</h2>
+				<h2>Silk Sarees</h2>
 				</a>
 			</div>
 			<div class="card">
@@ -136,7 +136,7 @@
 	<section id="footer">
 		<section class="footer-container">
 			<div class="menu">
-				<h3>contact us:</h3>
+				<h3>Contact us:</h3>
 				<span class="number">+917209587436</span>
 
 			</div>
@@ -199,7 +199,7 @@
 		<section class="foot">
 			<div class="footer-2">
 				<div class="copy">
-					<p>Copyright 2022@kaithary company</p>
+					<p>Copyright 2023@kaithary company</p>
 					<p>Allright's reserved</p>
 				</div>
 
